@@ -1,0 +1,16 @@
+{
+  "hierarchy": {
+    "truck": [],
+    "plane": [],
+    "package": [],
+    "city": [],
+    "location": []
+  },
+  "requirements": [
+    "typing",
+    "negative-preconditions",
+    "disjunctive-preconditions",
+    "conditional-effects",
+    "equality"
+  ]
+}

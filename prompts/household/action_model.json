@@ -1,0 +1,159 @@
+{
+  "Go to a Furniture Piece or an Appliance": {
+    "desc": "This action enables the robot to navigate from one normally immovable piece of furniture to another (e.g., dining tables, side tables, cabinets, and sinks) or an appliance (e.g., refrigerators, coffee makers, microwaves, and washers).",
+    "extra_info": []
+  },
+  "Pick up an Object on or in a Furniture Piece or an Appliance": {
+    "desc": "This action enables the robot to pick up an object object_1 in/on a large piece of furniture (e.g., dining tables, drawers, cabinets) or an appliance (e.g., dishwashers and refrigerators). For example, the robot pick up coffee_mug_1 on dining_table_1, the robot pick up fork_1 in drawer_1, or the robot pick up apple_1 in refrigerator_1.",
+    "extra_info": [
+      "This action is only applicable for objects that are pickupable by the robot.",
+      "The furniture piece or appliance should be opened if it is openable.",
+      "The object to pick up should not be stacked on top of other household items."
+    ]
+  },
+  "Put an Object on or in a Furniture Piece or an Appliance": {
+    "desc": "This action enables the robot to put an object object_1 in/on a large piece of furniture (e.g., dining tables, drawers, cabinets) or an appliance (e.g., dishwashers and refrigerators). For example, the robot puts coffee_mug_1 on dining_table_1, the robot puts fork_1 in drawer_1, or the robot puts apple_1 in refrigerator_1.",
+    "extra_info": [
+      "The furniture piece or appliance should be opened if it is openable."
+    ]
+  },
+  "Stack Objects": {
+    "desc": "This action enables the robot to stack one object object_1 on top of another object object_2 that is on the same piece of furniture. For example, the robot stacks book_1 on top of book_2, or the robot stacks lunch_box_1 on top of lunch_box_2.",
+    "extra_info": [
+      "The furniture piece has to have an open and flat surface.",
+      "Note that object_1 and object_2 both must be stackable objects.",
+      "You may assume the robot is holding object_1 at the beginning.",
+      "Also, there should be no other object on top of object_2."
+    ]
+  },
+  "Unstack Objects": {
+    "desc": "This action enables the robot to unstack one object object_1 that is on top of another object object_2. For example, the robot stacks book_1 on top of book_2, or the robot stacks lunch_box_1 on top of lunch_box_2. The robot will hold the object after unstacking it.",
+    "extra_info": []
+  },
+  "Open a Furniture Piece or an Appliance": {
+    "desc": "This action enables the robot to open a large piece of furniture (e.g., cabinets and drawers) or an appliance (e.g., dishwashers and refrigerators) that is openable. For example, the robot opens cabinet_1, or the robot opens drawer_2.",
+    "extra_info": []
+  },
+  "Close a Furniture Piece or an Appliance": {
+    "desc": "This action enables the robot to close a large piece of furniture (e.g., cabinets and drawers) or an appliance (e.g., dishwashers and refrigerators) that is openable. For example, the robot closes cabinet_1, or the robot closes drawer_2.",
+    "extra_info": []
+  },
+  "Toggle a Small Appliance On": {
+    "desc": "This action enables the robot to toggle a small appliances (like humidifiers and light bulbs) to switch them on. For example, the robot toggles humidifier_2 on, or the robot toggle light_bulb_1 on.",
+    "extra_info": []
+  },
+  "Toggle a Small Appliance Off": {
+    "desc": "This action enables the robot to toggle a small appliances (like humidifiers and light bulbs) to switch them off. For example, the robot toggles humidifier_2 off, or the robot toggle light_bulb_1 off.",
+    "extra_info": []
+  },
+  "Slice Objects": {
+    "desc": "This action enables the robot to slice objects (like fruits and vegetables) with a knife. For example, the robot slices orange_1 with knife_2, the robot slices potato_3 with knife_1.",
+    "extra_info": [
+      "Note that the object to slice needs to be placed on a cutting board. A cutting board can be viewed as a special kind of receptacle.",
+      "You may assume the robot is holding the knife in its gripper at the beginning.",
+      "The object to slice should be sliceable.",
+      "The furniture piece needs to have an open and flat surface to allow enough space for manipulation (e.g., countertops or tables)."
+    ]
+  },
+  "Heat Food with a Microwave": {
+    "desc": "This action enables the robot to start a microwave and heat up the food inside. For example, the robot heats pizza_1 with microwave_2, the robot heats pasta_2 with microwave_1.",
+    "extra_info": [
+      "The food to heat should be placed in a small receptacle (e.g., a plate or a bowl).",
+      "The robot also needs to close the door of the microwave before taking this action.",
+      "Note that the food is no longer pickupable after it has been heated."
+    ]
+  },
+  "Heat Food with Pan": {
+    "desc": "This action enables the robot to heat food which is heatable with a pan. For example, the robot heats pizza_1 with pan_2, the robot heats pasta_2 with pan_1.",
+    "extra_info": [
+      "Note that the food should be placed on the pan, and the pan needs to be placed on a stove burner before executing this action.",
+      "A stove burner can be viewed as an immovable appliance, and a pan can be viewed as a small receptacle.",
+      "Note that the food is no longer pickupable after it has been heated."
+    ]
+  },
+  "Transfer Food from One Small Receptacle to Another": {
+    "desc": "This action enables the robot to transfer food food_1 from one small receptacle receptacle_1 to another small receptacle receptacle_2. This skill is usually used to transfer food that can not be easily picked up by the robot. For example, the robot can pour the milk from milk_box_1 to mug_1, or the robot can transfer heated pizza_1 from pan_2 to plate_1.",
+    "extra_info": [
+      "The furniture piece needs to have an open and flat surface to allow enough space for manipulation (e.g., countertops or tables).",
+      "Both receptacles should be opened if it is openable.",
+      "Both receptacles should not be stacked on top of other objects if they are stackable."
+    ]
+  },
+  "Puts an Object onto or into a Small Receptacle": {
+    "desc": "This action enables the robot to put an object object_1 into/onto a small receptacle receptacle_1 (e.g. storage boxes, bowls, plates, or pans). For example, the robot puts apple_1 into blow_1, or the robot puts apple_2 into lunch_box_2.",
+    "extra_info": [
+      "The furniture piece needs to have an open and flat surface to allow enough space for manipulation (e.g., countertops or tables).",
+      "The receptacle should be opened if it is openable.",
+      "The receptacle should not be stacked on top of other objects if it is stackable."
+    ],
+    "short": "put an object ?x into/onto a small receptacle ?z at furniture piece ?y",
+    "prompt_example": "put apple_1 in/on plate_1 at dining_table_1",
+    "parameters": {},
+    "preconditions": [],
+    "effects": []
+  },
+  "Pick up an Object on or in a Small Receptacle": {
+    "desc": "This action enables the robot to pick up an object object_1 in some small receptacle receptacle_1 (e.g. storage boxes, lunch boxes, bowls, plates). For example, the robot picks up apple_1 in blow_1, or the robot picks up apple_2 in lunch_box_2.",
+    "extra_info": [
+      "The furniture piece needs to have an open and flat surface to allow enough space for manipulation (e.g., countertops or tables).",
+      "The receptacle should be opened if it is openable.",
+      "The receptacle should not be stacked on top of other objects if it is stackable."
+    ]
+  },
+  "Open a Small Receptacle": {
+    "desc": "This action enables the robot to open a small receptacle receptacle_1 (e.g. small storage boxes or lunch boxes with lids). For example, the robot opens lunch_box_2, or the robot opens storage_box_1.",
+    "extra_info": [
+      "This action is only applicable for receptacles that are openable.",
+      "The receptacle needs to be placed on a furniture piece that has an open and flat surface to allow enough space for manipulation (e.g., countertops or tables).",
+      "The receptacle should not be stacked on top of other objects if it is stackable."
+    ]
+  },
+  "Close a Small Receptacle": {
+    "desc": "This action enables the robot to close a small receptacle receptacle_1 that is openable (e.g. small storage boxes or lunch boxes with lids). For example, the robot closes lunch_box_2, or the robot closes storage_box_1.",
+    "extra_info": [
+      "This action is only applicable for receptacles that are openable.",
+      "The receptacle needs to be placed on a furniture piece that has an open and flat surface to allow enough space for manipulation (e.g., countertops or tables).",
+      "The receptacle should not be stacked on top of other objects if it is stackable."
+    ]
+  },
+  "Mash Food with a Blender": {
+    "desc": "This action enables the robot to use a blender to mash some food in it. For example, the robot gets mashed apple_2 with blender_1, or the robot gets mashed banana_1 with blender_2. A blender can be viewed as a small receptacle.",
+    "extra_info": [
+      "The food needs to be sliced beforehand and the food should be placed inside the blender.",
+      "Note that the food remains in the blender after this action is performed.",
+      "You may also assume the blender is turned off before and after mashing the food."
+    ]
+  },
+  "Wash an Object": {
+    "desc": "This action enables the robot to wash an object (e.g., fruits and cloths) in a sink or basin. For example, the robot washed apple_1, or the robot washed romaine_lettuce_1.",
+    "extra_info": [
+      "The object has to be something washable.",
+      "The robot should hold the object when washing it."
+    ]
+  },
+  "Wipe a Surface": {
+    "desc": "This action enables the robot to wipe and clean the surface of a piece of furniture or an appliance, such as a dining table, a mirror, a sink, or a bathtub, with a cloth. For example, the robot wipes dining_table_1 with cloth_1, the robot wipes mirror_1 with cloth_2.",
+    "extra_info": [
+      "You may assume the robot is holding the cloth before executing this action.",
+      "The cloth will be dirty after executing the action.",
+      "The robot should also use a clean cloth."
+    ]
+  },
+  "Vacuum a Carpet": {
+    "desc": "This action enables the robot to vacuum a carpet with a handheld vacuum cleaner. For example, the robot uses vacuum_cleaner_1 to vacuum carpet_2, the robot uses vacuum_cleaner_2 to vacuum carpet_1. A vacuum can be viewed as a small household item and a carpet can be viewed as an immovable piece of furniture.",
+    "extra_info": [
+      "You need to make sure the dust bin of the vacuum cleaner is not full before executing this action.",
+      "You may assume the robot is holding the vacuum cleaner at the beginning.",
+      "The dust bin of the vacuum cleaner will be full of dust if the carpet is not clean."
+    ]
+  },
+  "Empty a Vacuum Cleaner": {
+    "desc": "This action enables the robot to empty a vacuum cleaner\u2019s dust bin by standing next to a trash can and dumping the dust into it. For example, the robot empties vacuum_cleaner_1 and dumps the dust into trash_can_2, or the robot empties vacuum_cleaner_2 and dumps the dust into trash_can 1. A trash can can be viewed as an immovable piece of furniture.",
+    "extra_info": [
+      "Note that the robot should hold the vacuum cleaner and stand by the trash can before executing this action.",
+      "After executing this action, the robot is still holding the vacuum cleaner.",
+      "The trash can should be opened if it's openable.",
+      "The dust bin will be empty after executing this action."
+    ]
+  }
+}

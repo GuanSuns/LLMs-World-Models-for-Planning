@@ -1,0 +1,136 @@
+{
+    "Load a package into a truck": {
+        "parameters": [
+            "?p - package: the package to load",
+            "?t - truck: the truck to load the package into",
+            "?l - location: the location where the package and truck are"
+        ],
+        "preconditions": "(and\n  (package-at ?p ?l)\n  (truck-at ?t ?l)\n)",
+        "effects": "(and\n  (not (package-at ?p ?l))\n  (package-in-truck ?p ?t)\n)",
+        "action_desc": "This action enables the agent to load a package into a truck. For example, load a package_1 into a truck_1.",
+        "translated_preconditions": [
+            "the package ?p is at the location ?l",
+            "the truck ?t is at the location ?l"
+        ],
+        "translated_effects": [
+            "the package ?p is not at the location ?l",
+            "the package ?p is in the truck ?t"
+        ],
+        "short": "load a package ?p into a truck ?t at location ?l",
+        "prompt_example": "load package_1 into truck_1 at location_2"
+    },
+    "Unload a package from a truck": {
+        "parameters": [
+            "?p - package: the package to unload",
+            "?t - truck: the truck from which the package will be unloaded",
+            "?l - location: the location where the package will be unloaded"
+        ],
+        "preconditions": "(and\n  (package-in-truck ?p ?t)\n  (truck-at ?t ?l)\n)",
+        "effects": "(and\n  (not (package-in-truck ?p ?t))\n  (package-at ?p ?l)\n)",
+        "action_desc": "This action enables the agent to unload a package from a truck. For example, unload a package_1 from a truck_1.",
+        "translated_preconditions": [
+            "the package ?p is in the truck ?t",
+            "the truck ?t is at the location ?l"
+        ],
+        "translated_effects": [
+            "the package ?p is not in the truck ?t",
+            "the package ?p is at the location ?l"
+        ],
+        "short": "unload a package ?p from a truck ?t at location ?l",
+        "prompt_example": "unload package_1 from truck_1 at location_2"
+    },
+    "Load a package into an airplane": {
+        "parameters": [
+            "?p - package: the package to load into the airplane",
+            "?a - plane: the airplane to load the package into",
+            "?l - location: the location where the airplane and package are"
+        ],
+        "preconditions": "(and\n  (package-at ?p ?l)\n  (plane-at ?a ?l)\n  (location-is-airport ?l)\n)",
+        "effects": "(and\n  (not (package-at ?p ?l))\n  (package-in-plane ?p ?a)\n)",
+        "action_desc": "This action enables the agent to load a package into an airplane. For example, load a package_1 into an airplane_1.",
+        "translated_preconditions": [
+            "the package ?p is at the location ?l",
+            "the airplane ?a is at the location ?l",
+            "the location ?l is an airport"
+        ],
+        "translated_effects": [
+            "the package ?p is not at the location ?l",
+            "the package ?p is in the airplane ?a"
+        ],
+        "short": "load a package ?p into an airplane ?a at location ?l",
+        "prompt_example": "load package_1 into airplane_1 at location_2"
+    },
+    "Unload a package from an airplane": {
+        "parameters": [
+            "?p - package: the package to unload",
+            "?a - plane: the airplane from which the package will be unloaded",
+            "?l - location: the location where the package will be unloaded"
+        ],
+        "preconditions": "(and\n  (package-in-plane ?p ?a)\n  (plane-at ?a ?l)\n  (location-is-airport ?l)\n)",
+        "effects": "(and\n  (not (package-in-plane ?p ?a))\n  (package-at ?p ?l)\n)",
+        "action_desc": "This action enables the agent to unload a package from an airplane. For example, unload a package_1 from an airplane_1.",
+        "translated_preconditions": [
+            "the package ?p is in the airplane ?a",
+            "the airplane ?a is at the location ?l",
+            "the location ?l is an airport"
+        ],
+        "translated_effects": [
+            "the package ?p is not in the airplane ?a",
+            "the package ?p is at the location ?l"
+        ],
+        "short": "unload a package ?p from an airplane ?a at location ?l",
+        "prompt_example": "unload package_1 from airplane_1 at location_2"
+    },
+    "Drive a truck from one location to another in a city": {
+        "parameters": [
+            "?t - truck: the truck to be driven",
+            "?from - location: the starting location of the truck",
+            "?to - location: the destination location of the truck",
+            "?c - city: the city in which the truck is being driven"
+        ],
+        "preconditions": "(and\n  (truck-at ?t ?from)\n  (location-in-city ?from ?c)\n  (location-in-city ?to ?c)\n  (not (= ?from ?to))\n)",
+        "effects": "(and\n  (not (truck-at ?t ?from))\n  (truck-at ?t ?to)\n  (move-all-packages ?t ?from ?to)\n)",
+        "action_desc": "",
+        "translated_preconditions": [
+            "the truck ?t is at the location ?from",
+            "the location ?from is in the city ?c",
+            "the location ?to is in the city ?c",
+            "the locations ?from and ?to are not the same"
+        ],
+        "translated_effects": [
+            "the truck ?t is not at the location ?from",
+            "the truck ?t is at the location ?to",
+            "all packages in the truck ?t are moved from location ?from to location ?to"
+        ],
+        "short": "drive a truck ?t from location ?from to location ?to in city ?c",
+        "prompt_example": "drive truck_2 from location_3 to location_4 in city_1"
+    },
+    "Fly an airplane from one city to another": {
+        "parameters": [
+            "?a - plane: the airplane to fly",
+            "?from - location: the departure location (airport) in the city",
+            "?to - location: the destination location (airport) in the city",
+            "?c1 - city: the city where the departure location is",
+            "?c2 - city: the city where the destination location is"
+        ],
+        "preconditions": "(and\n  (plane-at ?a ?from)\n  (location-is-airport ?from)\n  (location-is-airport ?to)\n  (location-in-city ?from ?c1)\n  (location-in-city ?to ?c2)\n  (not (= ?from ?to))\n  (not (= ?c1 ?c2))\n)",
+        "effects": "(and\n  (not (plane-at ?a ?from))\n  (plane-at ?a ?to)\n  (move-all-packages-in-plane ?a ?from ?to)\n)",
+        "action_desc": "This action enables the agent to fly an airplane from one city's airport to another. The airports are locations in the city. For example, fly an airplane_1 from location_0 to location_1.",
+        "translated_preconditions": [
+            "the airplane ?a is at the location ?from",
+            "the location ?from is an airport",
+            "the location ?to is an airport",
+            "the location ?from is in the city ?c1",
+            "the location ?to is in the city ?c2",
+            "the locations ?from and ?to are not the same",
+            "the cities ?c1 and ?c2 are not the same"
+        ],
+        "translated_effects": [
+            "the airplane ?a is not at the location ?from",
+            "the airplane ?a is at the location ?to",
+            "all packages in the airplane ?a are moved from location ?from to location ?to"
+        ],
+        "short": "fly an airplane ?a from location ?from in city ?c1 to location ?to in city ?c2",
+        "prompt_example": "fly airplane_1 from location_0 in city_1 to location_1 in city_2"
+    }
+}

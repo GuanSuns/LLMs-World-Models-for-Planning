@@ -1,0 +1,9 @@
+(package-at ?p - package ?l - location): true if the package ?p is at the location ?l
+(truck-at ?t - truck ?l - location): true if the truck ?t is at the location ?l
+(package-in-truck ?p - package ?t - truck): true if the package ?p is in the truck ?t
+(plane-at ?a - plane ?l - location): true if the airplane ?a is at the location ?l
+(location-is-airport ?l - location): true if the location ?l is an airport
+(package-in-plane ?p - package ?a - plane): true if the package ?p is in the airplane ?a
+(location-in-city ?l - location ?c - city): true if the location ?l is in the city ?c
+(move-all-packages ?t - truck ?from - location ?to - location): true if all packages in the truck ?t are moved from location ?from to location ?to
+(move-all-packages-in-plane ?a - plane ?from - location ?to - location): true if all packages in the airplane ?a are moved from location ?from to location ?to

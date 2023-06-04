@@ -1,0 +1,14 @@
+{
+  "hierarchy": {
+    "small_object": ["tool", "wheel", "nut"],
+    "container": [],
+    "hub": []
+  },
+  "requirements": [
+    "typing",
+    "negative-preconditions",
+    "disjunctive-preconditions",
+    "conditional-effects",
+    "equality"
+  ]
+}

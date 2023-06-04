@@ -1,0 +1,30 @@
+{
+    "Load a package into a truck": {
+        "desc": "This action enables the agent to load a package into a truck. For example, load a package_1 into a truck_1.",
+        "extra_info": []
+    },
+    "Unload a package from a truck": {
+        "desc": "This action enables the agent to unload a package from a truck. For example, unload a package_1 from a truck_1.",
+        "extra_info": []
+    },
+
+    "Load a package into an airplane": {
+        "desc": "This action enables the agent to load a package into an airplane. For example, load a package_1 into an airplane_1.",
+        "extra_info": []
+    },
+
+    "Unload a package from an airplane": {
+        "desc": "This action enables the agent to unload a package from an airplane. For example, unload a package_1 from an airplane_1.",
+        "extra_info": []
+    },
+
+    "Drive a truck from one location to another in a city": {
+        "desc": "This action enables the agent to drive a truck from one location to another in a city. For example, drive a truck_1 from location_1 to location_2 in city_1.",
+        "extra_info": []
+    },
+
+    "Fly an airplane from one city to another":{
+        "desc": "This action enables the agent to fly an airplane from one city's airport to another. The airports are locations in the city. For example, fly an airplane_1 from location_0 to location_1.",
+        "extra_info": []
+    }
+}

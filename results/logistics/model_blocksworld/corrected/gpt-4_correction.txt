@@ -1,0 +1,164 @@
+####################
+Action: Drive a truck from one location to another in a city
+####################
+--------------------
+user:
+You are defining the preconditions and effects (represented in PDDL format) of an AI agent's actions. Information about the AI agent will be provided in the domain description. Note that individual conditions in preconditions and effects should be listed separately. For example, "object_1 is washed and heated" should be considered as two separate conditions "object_1 is washed" and "object_1 is heated". Also, in PDDL, two predicates cannot have the same name even if they have different parameters. Each predicate in PDDL must have a unique name, and its parameters must be explicitly defined in the predicate definition. It is recommended to define predicate names in an intuitive and readable way.
+
+Here are two examples from the classical BlocksWorld domain for demonstrating the output format.
+
+Domain information: BlocksWorld is a planning domain in artificial intelligence. The AI agent here is a mechanical robot arm that can pick and place the blocks. Only one block may be moved at a time: it may either be placed on the table or placed atop another block. Because of this, any blocks that are, at a given time, under another block cannot be moved. There is only one type of object in this domain, and that is the block.
+
+Example 1
+Action: This action enables the robot to put a block onto the table. For example, the robot puts block_1 onto the table.
+
+You can create and define new predicates, but you may also reuse the following predicates:
+No predicate has been defined yet
+
+Parameters:
+1. ?x - block: the block to put down
+
+Preconditions:
+```
+(and
+    (robot-holding ?x)
+)
+```
+
+Effects:
+```
+(and
+    (not (robot-holding ?x))
+    (block-clear ?x)
+    (robot-hand-empty)
+    (block-on-table ?x)
+)
+```
+
+New Predicates:
+1. (robot-holding ?x - block): true if the robot arm is holding the block ?x
+2. (block-clear ?x - block): true if the block ?x is not under any another block
+3. (robot-hand-empty): true if the robot arm is not holding any block
+4. (block-on-table ?x - block): true if the block ?x is placed on the table
+
+
+Example 2
+Action: This action enables the robot to pick up a block on the table.
+
+You can create and define new predicates, but you may also reuse the following predicates:
+1. (robot-holding ?x - block): true if the robot arm is holding the block ?x
+2. (block-clear ?x - block): true if the block ?x is not under any another block
+3. (robot-hand-empty): true if the robot arm is not holding any block
+4. (block-on-table ?x - block): true if the block ?x is placed on the table
+
+Parameters:
+1. ?x - block: the block to pick up
+
+Preconditions:
+```
+(and
+    (block-clear ?x)
+    (block-on-table ?x)
+    (robot-hand-empty)
+)
+```
+
+Effects:
+```
+(and
+    (not (block-on-table ?x))
+    (not (block-clear ?x))
+    (not (robot-hand-empty))
+    (robot-holding ?x)
+)
+```
+
+New Predicates:
+No newly defined predicate
+
+
+Here is the task.
+
+Domain information: The AI agent here is a logistics planner that has to plan to transport packages within the locations in a city through a truck and between cities through an airplane. Within a city, the locations are directly linked, allowing trucks to travel between any two of these locations. Similarly, cities are directly connected to each other allowing airplanes to travel between any two cities. Each city is equipped with one truck and has a designated location that functions as an airport. There are five types of object: package, truck, plane, location, and city. There are multiple cities and each city can have multiple locations. Also, there is no limit to how many packages a truck or plane can carry (so in theory a truck or plane can carry an infinite number of packages).
+
+Action: This action enables the agent to drive a truck from one location to another in a city. For example, drive a truck_1 from location_1 to location_2 in city_1.
+
+You can create and define new predicates, but you may also reuse the following predicates:
+1. (package-at ?p - package ?l - location): true if the package ?p is at the location ?l
+2. (truck-at ?t - truck ?l - location): true if the truck ?t is at the location ?l
+3. (package-in-truck ?p - package ?t - truck): true if the package ?p is in the truck ?t
+4. (plane-at ?a - plane ?l - location): true if the airplane ?a is at the location ?l
+5. (location-is-airport ?l - location): true if the location ?l is an airport
+6. (package-in-plane ?p - package ?a - plane): true if the package ?p is in the airplane ?a
+7. (location-in-city ?l - location ?c - city): true if the location ?l is in the city ?c
+8. (move-all-packages ?t - truck ?from - location ?to - location): true if all packages in the truck ?t are moved from location ?from to location ?to
+9. (move-all-packages-in-plane ?a - plane ?from - location ?to - location): true if all packages in the airplane ?a are moved from location ?from to location ?to
+
+Parameters:
+--------------------
+--------------------
+assistant:
+1. ?t - truck: the truck to be driven
+2. ?from - location: the starting location of the truck
+3. ?to - location: the destination location of the truck
+4. ?c - city: the city in which the truck is being driven
+
+Preconditions:
+```
+(and
+    (truck-at ?t ?from)
+    (location-in-city ?from ?c)
+    (location-in-city ?to ?c)
+)
+```
+
+Effects:
+```
+(and
+    (not (truck-at ?t ?from))
+    (truck-at ?t ?to)
+    (move-all-packages ?t ?from ?to)
+)
+```
+
+New Predicates:
+No newly defined predicate
+--------------------
+--------------------
+user:
+There is an error in the PDDL model:
+1. You need to make sure the starting location and the destination are two different locations in a city
+
+Please revise the PDDL model (and the list of predicates if needed) to fix the above errors (and other potentially similar errors).
+
+Parameters:
+--------------------
+--------------------
+assistant:
+1. ?t - truck: the truck to be driven
+2. ?from - location: the starting location of the truck
+3. ?to - location: the destination location of the truck
+4. ?c - city: the city in which the truck is being driven
+
+Preconditions:
+```
+(and
+    (truck-at ?t ?from)
+    (location-in-city ?from ?c)
+    (location-in-city ?to ?c)
+    (not (= ?from ?to))
+)
+```
+
+Effects:
+```
+(and
+    (not (truck-at ?t ?from))
+    (truck-at ?t ?to)
+    (move-all-packages ?t ?from ?to)
+)
+```
+
+New Predicates:
+No newly defined predicate
+--------------------

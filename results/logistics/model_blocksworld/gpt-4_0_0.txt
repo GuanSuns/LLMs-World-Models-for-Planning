@@ -1,0 +1,243 @@
+
+
+####################
+Action: Load a package into a truck
+####################
+--------------------
+You can create and define new predicates, but you may also reuse the following predicates:
+No predicate has been defined yet
+--------------------
+--------------------
+1. ?p - package: the package to be loaded
+2. ?t - truck: the truck to load the package into
+3. ?l - location: the location where the package and truck are present
+
+Preconditions:
+```
+(and
+    (package-at ?p ?l)
+    (truck-at ?t ?l)
+)
+```
+
+Effects:
+```
+(and
+    (not (package-at ?p ?l))
+    (package-in-truck ?p ?t)
+)
+```
+
+New Predicates:
+1. (package-at ?p - package ?l - location): true if the package ?p is at the location ?l
+2. (truck-at ?t - truck ?l - location): true if the truck ?t is at the location ?l
+3. (package-in-truck ?p - package ?t - truck): true if the package ?p is in the truck ?t
+
+
+####################
+Action: Unload a package from a truck
+####################
+--------------------
+You can create and define new predicates, but you may also reuse the following predicates:
+1. (package-at ?p - package ?l - location): true if the package ?p is at the location ?l
+2. (truck-at ?t - truck ?l - location): true if the truck ?t is at the location ?l
+3. (package-in-truck ?p - package ?t - truck): true if the package ?p is in the truck ?t
+--------------------
+--------------------
+1. ?p - package: the package to unload
+2. ?t - truck: the truck from which the package will be unloaded
+3. ?l - location: the location where the package will be unloaded
+
+Preconditions:
+```
+(and
+    (package-in-truck ?p ?t)
+    (truck-at ?t ?l)
+)
+```
+
+Effects:
+```
+(and
+    (not (package-in-truck ?p ?t))
+    (package-at ?p ?l)
+)
+```
+
+New Predicates:
+No newly defined predicate
+
+
+####################
+Action: Load a package into an airplane
+####################
+--------------------
+You can create and define new predicates, but you may also reuse the following predicates:
+1. (package-at ?p - package ?l - location): true if the package ?p is at the location ?l
+2. (truck-at ?t - truck ?l - location): true if the truck ?t is at the location ?l
+3. (package-in-truck ?p - package ?t - truck): true if the package ?p is in the truck ?t
+--------------------
+--------------------
+1. ?p - package: the package to load into the airplane
+2. ?a - plane: the airplane to load the package into
+3. ?l - location: the location where the airplane and package are present
+
+Preconditions:
+```
+(and
+    (package-at ?p ?l)
+    (plane-at ?a ?l)
+    (location-is-airport ?l)
+)
+```
+
+Effects:
+```
+(and
+    (not (package-at ?p ?l))
+    (package-in-plane ?p ?a)
+)
+```
+
+New Predicates:
+1. (plane-at ?a - plane ?l - location): true if the airplane ?a is at the location ?l
+2. (location-is-airport ?l - location): true if the location ?l is an airport
+3. (package-in-plane ?p - package ?a - plane): true if the package ?p is in the airplane ?a
+
+
+####################
+Action: Unload a package from an airplane
+####################
+--------------------
+You can create and define new predicates, but you may also reuse the following predicates:
+1. (package-at ?p - package ?l - location): true if the package ?p is at the location ?l
+2. (truck-at ?t - truck ?l - location): true if the truck ?t is at the location ?l
+3. (package-in-truck ?p - package ?t - truck): true if the package ?p is in the truck ?t
+4. (plane-at ?a - plane ?l - location): true if the airplane ?a is at the location ?l
+5. (location-is-airport ?l - location): true if the location ?l is an airport
+6. (package-in-plane ?p - package ?a - plane): true if the package ?p is in the airplane ?a
+--------------------
+--------------------
+1. ?p - package: the package to unload
+2. ?a - plane: the airplane from which the package will be unloaded
+3. ?l - location: the location where the airplane is and the package will be unloaded
+
+Preconditions:
+```
+(and
+    (package-in-plane ?p ?a)
+    (plane-at ?a ?l)
+)
+```
+
+Effects:
+```
+(and
+    (not (package-in-plane ?p ?a))
+    (package-at ?p ?l)
+)
+```
+
+New Predicates:
+No newly defined predicate
+
+
+####################
+Action: Drive a truck from one location to another in a city
+####################
+--------------------
+You can create and define new predicates, but you may also reuse the following predicates:
+1. (package-at ?p - package ?l - location): true if the package ?p is at the location ?l
+2. (truck-at ?t - truck ?l - location): true if the truck ?t is at the location ?l
+3. (package-in-truck ?p - package ?t - truck): true if the package ?p is in the truck ?t
+4. (plane-at ?a - plane ?l - location): true if the airplane ?a is at the location ?l
+5. (location-is-airport ?l - location): true if the location ?l is an airport
+6. (package-in-plane ?p - package ?a - plane): true if the package ?p is in the airplane ?a
+--------------------
+--------------------
+1. ?t - truck: the truck to drive
+2. ?from - location: the location where the truck is currently
+3. ?to - location: the location where the truck will be driven to
+4. ?c - city: the city where the truck is driving
+
+Preconditions:
+```
+(and
+    (truck-at ?t ?from)
+    (location-in-city ?from ?c)
+    (location-in-city ?to ?c)
+    (not (= ?from ?to))
+)
+```
+
+Effects:
+```
+(and
+    (not (truck-at ?t ?from))
+    (truck-at ?t ?to)
+    (move-all-packages ?t ?from ?to)
+)
+```
+
+New Predicates:
+1. (location-in-city ?l - location ?c - city): true if the location ?l is in the city ?c
+2. (move-all-packages ?t - truck ?from - location ?to - location): true if all packages in the truck ?t are moved from location ?from to location ?to
+
+
+####################
+Action: Fly an airplane from one city to another
+####################
+--------------------
+You can create and define new predicates, but you may also reuse the following predicates:
+1. (package-at ?p - package ?l - location): true if the package ?p is at the location ?l
+2. (truck-at ?t - truck ?l - location): true if the truck ?t is at the location ?l
+3. (package-in-truck ?p - package ?t - truck): true if the package ?p is in the truck ?t
+4. (plane-at ?a - plane ?l - location): true if the airplane ?a is at the location ?l
+5. (location-is-airport ?l - location): true if the location ?l is an airport
+6. (package-in-plane ?p - package ?a - plane): true if the package ?p is in the airplane ?a
+7. (location-in-city ?l - location ?c - city): true if the location ?l is in the city ?c
+8. (move-all-packages ?t - truck ?from - location ?to - location): true if all packages in the truck ?t are moved from location ?from to location ?to
+--------------------
+--------------------
+1. ?a - plane: the airplane to fly
+2. ?from - location: the departure location (airport) in the city
+3. ?to - location: the destination location (airport) in the city
+4. ?c1 - city: the departure city
+5. ?c2 - city: the destination city
+
+Preconditions:
+```
+(and
+    (plane-at ?a ?from)
+    (location-is-airport ?from)
+    (location-is-airport ?to)
+    (location-in-city ?from ?c1)
+    (location-in-city ?to ?c2)
+    (not (= ?c1 ?c2))
+)
+```
+
+Effects:
+```
+(and
+    (not (plane-at ?a ?from))
+    (plane-at ?a ?to)
+    (move-all-packages-in-plane ?a ?from ?to)
+)
+```
+
+New Predicates:
+1. (move-all-packages-in-plane ?a - plane ?from - location ?to - location): true if all packages in the airplane ?a are moved from location ?from to location ?to
+
+--------------------
+Extracted predicates:
+
+1. (package-at ?p - package ?l - location): true if the package ?p is at the location ?l
+2. (truck-at ?t - truck ?l - location): true if the truck ?t is at the location ?l
+3. (package-in-truck ?p - package ?t - truck): true if the package ?p is in the truck ?t
+4. (plane-at ?a - plane ?l - location): true if the airplane ?a is at the location ?l
+5. (location-is-airport ?l - location): true if the location ?l is an airport
+6. (package-in-plane ?p - package ?a - plane): true if the package ?p is in the airplane ?a
+7. (location-in-city ?l - location ?c - city): true if the location ?l is in the city ?c
+8. (move-all-packages ?t - truck ?from - location ?to - location): true if all packages in the truck ?t are moved from location ?from to location ?to
+9. (move-all-packages-in-plane ?a - plane ?from - location ?to - location): true if all packages in the airplane ?a are moved from location ?from to location ?to

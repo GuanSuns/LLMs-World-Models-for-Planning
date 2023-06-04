@@ -1,0 +1,66 @@
+{
+    "Open a container": {
+        "desc": "This action enables the robot to open a container. For example, the robot can open a boot.",
+        "extra_info": []
+    },
+
+    "Close a container": {
+        "desc": "This action enables the robot to close a container. For example, the robot can close a boot.",
+        "extra_info": []
+    },
+
+    "Fetch an object from a container": {
+        "desc": "This action enables the robot to take an object from a container. For example, the robot can fetch jack from the boot or the robot can fetch wheel_1 from the boot.",
+        "extra_info": []
+    },
+
+    "Put away an object into a container": {
+        "desc": "This action enables the robot to put an object into a container. For example, the robot can put away jack into the boot or the robot can put away wheel_1 into the boot.",
+        "extra_info": []
+    },
+
+    "Loosen a nut in a hub": {
+        "desc": "This action enables the robot to loosen a nut in a hub. For example, the robot can loosen nut_1 in hub_1. To safely perform this action, the hub needs to be on the ground (i.e., not jacked-up). You may assume the nut remains on the hub after the robot loosens it.",
+        "extra_info": []
+    },
+
+    "Tighten a nut in a hub": {
+        "desc": "This action enables the robot to tighten a nut in a hub. For example, the robot can tighten nut_1 in hub_1. To safely perform this action, the hub needs to be on the ground (i.e., not jacked-up).",
+        "extra_info": []
+    },
+
+    "Jack up a hub": {
+        "desc": "This action enables the robot to jack up a hub. For example, the robot can jack up hub_1.",
+        "extra_info": []
+    },
+
+    "Jack down a hub": {
+        "desc": "This action enables the robot to jack down a hub. For example, the robot can jack down hub_1.",
+        "extra_info": []
+    },
+
+    "Unfasten a hub": {
+        "desc": "This action enables the robot to unfasten a hub. To achieve this, the robot needs to first remove the nut on the hub and then unfasten the hub. For example, the robot can unfasten hub_1 that has nut_1. To safely perform this action, the hub needs to be jacked up. At the end of this action, the hub should be unfastened, and nut should be detached from the hub and held by the robot.",
+        "extra_info": []
+    },
+
+    "Fasten a hub": {
+        "desc": "This action enables the robot to fasten a hub. To achieve this, the robot needs to first put a nut on the hub and then fasten the hub. For example, the robot can fasten hub_1 that has nut_1. Note that although the robot needs to install a nut into the hub, but the robot is not required to tighten the nut in this action. To safely perform this action, the hub needs to be jacked up.",
+        "extra_info": []
+    },
+
+    "Remove wheel from hub": {
+        "desc": "This action enables the robot to remove a wheel from a hub. For example, the robot can remove wheel_1 from hub_1. Note that the hub needs to be unfastened in order to remove the wheel. To safely perform this action, the hub needs to be jacked up.",
+        "extra_info": []
+    },
+
+    "Put wheel on hub": {
+        "desc": "This action enables the robot to put a wheel on an unfastened hub. For example, the robot can put wheel_1 on hub_1. Note that the hub needs to be unfastened in order to put on the wheel. To safely perform this action, the hub needs to be jacked up.",
+        "extra_info": []
+    },
+
+    "Inflate wheel": {
+        "desc": "This action enables the robot to inflate a wheel. For example, the robot can inflate wheel_1. You also need to make sure the wheel is intact.",
+        "extra_info": []
+    }
+}

@@ -1,0 +1,542 @@
+
+
+####################
+Action: Open a container
+####################
+--------------------
+You can create and define new predicates, but you may also reuse the following predicates:
+No predicate has been defined yet
+--------------------
+--------------------
+1. ?c - container: the container to open
+
+Preconditions:
+```
+(and
+    (container-closed ?c)
+)
+```
+
+Effects:
+```
+(and
+    (not (container-closed ?c))
+    (container-open ?c)
+)
+```
+
+New Predicates:
+1. (container-closed ?c - container): true if the container ?c is closed
+2. (container-open ?c - container): true if the container ?c is open
+
+
+####################
+Action: Close a container
+####################
+--------------------
+You can create and define new predicates, but you may also reuse the following predicates:
+1. (container-closed ?c - container): true if the container ?c is closed
+2. (container-open ?c - container): true if the container ?c is open
+--------------------
+--------------------
+1. ?c - container: the container to close
+
+Preconditions:
+```
+(and
+    (container-open ?c)
+)
+```
+
+Effects:
+```
+(and
+    (not (container-open ?c))
+    (container-closed ?c)
+)
+```
+
+New Predicates:
+No newly defined predicate
+
+
+####################
+Action: Fetch an object from a container
+####################
+--------------------
+You can create and define new predicates, but you may also reuse the following predicates:
+1. (container-closed ?c - container): true if the container ?c is closed
+2. (container-open ?c - container): true if the container ?c is open
+--------------------
+--------------------
+1. ?x - small_object: the object to take from the container
+2. ?c - container: the container from which the object is taken
+
+Preconditions:
+```
+(and
+    (container-open ?c)
+    (object-in-container ?x ?c)
+)
+```
+
+Effects:
+```
+(and
+    (not (object-in-container ?x ?c))
+    (robot-holding ?x)
+)
+```
+
+New Predicates:
+1. (object-in-container ?x - small_object ?c - container): true if the object ?x is inside the container ?c
+2. (robot-holding ?x - small_object): true if the robot is holding the object ?x
+
+
+####################
+Action: Put away an object into a container
+####################
+--------------------
+You can create and define new predicates, but you may also reuse the following predicates:
+1. (container-closed ?c - container): true if the container ?c is closed
+2. (container-open ?c - container): true if the container ?c is open
+3. (object-in-container ?x - small_object ?c - container): true if the object ?x is inside the container ?c
+4. (robot-holding ?x - small_object): true if the robot is holding the object ?x
+--------------------
+--------------------
+1. ?x - small_object: the object to put into the container
+2. ?c - container: the container to put the object into
+
+Preconditions:
+```
+(and
+    (robot-holding ?x)
+    (container-open ?c)
+)
+```
+
+Effects:
+```
+(and
+    (not (robot-holding ?x))
+    (object-in-container ?x ?c)
+)
+```
+
+New Predicates:
+No newly defined predicate
+
+
+####################
+Action: Loosen a nut in a hub
+####################
+--------------------
+You can create and define new predicates, but you may also reuse the following predicates:
+1. (container-closed ?c - container): true if the container ?c is closed
+2. (container-open ?c - container): true if the container ?c is open
+3. (object-in-container ?x - small_object ?c - container): true if the object ?x is inside the container ?c
+4. (robot-holding ?x - small_object): true if the robot is holding the object ?x
+--------------------
+--------------------
+1. ?n - nut: the nut to be loosened
+2. ?h - hub: the hub where the nut is located
+3. ?w - tool: the wrench to be used for loosening the nut
+
+Preconditions:
+```
+(and
+    (robot-holding ?w)
+    (nut-on-hub ?n ?h)
+    (hub-on-ground ?h)
+    (is-wrench ?w)
+)
+```
+
+Effects:
+```
+(and
+    (not (nut-tight ?n ?h))
+    (nut-loose ?n ?h)
+)
+```
+
+New Predicates:
+1. (nut-on-hub ?n - nut ?h - hub): true if the nut ?n is on the hub ?h
+2. (hub-on-ground ?h - hub): true if the hub ?h is on the ground (not jacked-up)
+3. (nut-tight ?n - nut ?h - hub): true if the nut ?n is tight on the hub ?h
+4. (nut-loose ?n - nut ?h - hub): true if the nut ?n is loose on the hub ?h
+5. (is-wrench ?w - tool): true if the tool ?w is a wrench
+
+
+####################
+Action: Tighten a nut in a hub
+####################
+--------------------
+You can create and define new predicates, but you may also reuse the following predicates:
+1. (container-closed ?c - container): true if the container ?c is closed
+2. (container-open ?c - container): true if the container ?c is open
+3. (object-in-container ?x - small_object ?c - container): true if the object ?x is inside the container ?c
+4. (robot-holding ?x - small_object): true if the robot is holding the object ?x
+5. (nut-on-hub ?n - nut ?h - hub): true if the nut ?n is on the hub ?h
+6. (hub-on-ground ?h - hub): true if the hub ?h is on the ground (not jacked-up)
+7. (nut-tight ?n - nut ?h - hub): true if the nut ?n is tight on the hub ?h
+8. (nut-loose ?n - nut ?h - hub): true if the nut ?n is loose on the hub ?h
+9. (is-wrench ?w - tool): true if the tool ?w is a wrench
+--------------------
+--------------------
+1. ?n - nut: the nut to tighten
+2. ?h - hub: the hub where the nut is located
+3. ?w - tool: the wrench to use for tightening the nut
+
+Preconditions:
+```
+(and
+    (nut-on-hub ?n ?h)
+    (hub-on-ground ?h)
+    (nut-loose ?n ?h)
+    (robot-holding ?w)
+    (is-wrench ?w)
+)
+```
+
+Effects:
+```
+(and
+    (not (nut-loose ?n ?h))
+    (nut-tight ?n ?h)
+)
+```
+
+New Predicates:
+No newly defined predicate
+
+
+####################
+Action: Jack up a hub
+####################
+--------------------
+You can create and define new predicates, but you may also reuse the following predicates:
+1. (container-closed ?c - container): true if the container ?c is closed
+2. (container-open ?c - container): true if the container ?c is open
+3. (object-in-container ?x - small_object ?c - container): true if the object ?x is inside the container ?c
+4. (robot-holding ?x - small_object): true if the robot is holding the object ?x
+5. (nut-on-hub ?n - nut ?h - hub): true if the nut ?n is on the hub ?h
+6. (hub-on-ground ?h - hub): true if the hub ?h is on the ground (not jacked-up)
+7. (nut-tight ?n - nut ?h - hub): true if the nut ?n is tight on the hub ?h
+8. (nut-loose ?n - nut ?h - hub): true if the nut ?n is loose on the hub ?h
+9. (is-wrench ?w - tool): true if the tool ?w is a wrench
+--------------------
+--------------------
+1. ?h - hub: the hub to jack up
+2. ?j - tool: the jack to use for jacking up the hub
+
+Preconditions:
+```
+(and
+    (robot-holding ?j)
+    (is-jack ?j)
+    (hub-on-ground ?h)
+)
+```
+
+Effects:
+```
+(and
+    (not (hub-on-ground ?h))
+    (hub-jacked-up ?h)
+)
+```
+
+New Predicates:
+1. (is-jack ?j - tool): true if the tool ?j is a jack
+2. (hub-jacked-up ?h - hub): true if the hub ?h is jacked up (not on the ground)
+
+
+####################
+Action: Jack down a hub
+####################
+--------------------
+You can create and define new predicates, but you may also reuse the following predicates:
+1. (container-closed ?c - container): true if the container ?c is closed
+2. (container-open ?c - container): true if the container ?c is open
+3. (object-in-container ?x - small_object ?c - container): true if the object ?x is inside the container ?c
+4. (robot-holding ?x - small_object): true if the robot is holding the object ?x
+5. (nut-on-hub ?n - nut ?h - hub): true if the nut ?n is on the hub ?h
+6. (hub-on-ground ?h - hub): true if the hub ?h is on the ground (not jacked-up)
+7. (nut-tight ?n - nut ?h - hub): true if the nut ?n is tight on the hub ?h
+8. (nut-loose ?n - nut ?h - hub): true if the nut ?n is loose on the hub ?h
+9. (is-wrench ?w - tool): true if the tool ?w is a wrench
+10. (is-jack ?j - tool): true if the tool ?j is a jack
+11. (hub-jacked-up ?h - hub): true if the hub ?h is jacked up (not on the ground)
+--------------------
+--------------------
+1. ?h - hub: the hub to jack down
+2. ?j - tool: the jack to use for jacking down the hub
+
+Preconditions:
+```
+(and
+    (robot-holding ?j)
+    (is-jack ?j)
+    (hub-jacked-up ?h)
+)
+```
+
+Effects:
+```
+(and
+    (not (hub-jacked-up ?h))
+    (hub-on-ground ?h)
+)
+```
+
+New Predicates:
+No newly defined predicate
+
+
+####################
+Action: Unfasten a hub
+####################
+--------------------
+You can create and define new predicates, but you may also reuse the following predicates:
+1. (container-closed ?c - container): true if the container ?c is closed
+2. (container-open ?c - container): true if the container ?c is open
+3. (object-in-container ?x - small_object ?c - container): true if the object ?x is inside the container ?c
+4. (robot-holding ?x - small_object): true if the robot is holding the object ?x
+5. (nut-on-hub ?n - nut ?h - hub): true if the nut ?n is on the hub ?h
+6. (hub-on-ground ?h - hub): true if the hub ?h is on the ground (not jacked-up)
+7. (nut-tight ?n - nut ?h - hub): true if the nut ?n is tight on the hub ?h
+8. (nut-loose ?n - nut ?h - hub): true if the nut ?n is loose on the hub ?h
+9. (is-wrench ?w - tool): true if the tool ?w is a wrench
+10. (is-jack ?j - tool): true if the tool ?j is a jack
+11. (hub-jacked-up ?h - hub): true if the hub ?h is jacked up (not on the ground)
+--------------------
+--------------------
+1. ?h - hub: the hub to unfasten
+2. ?n - nut: the nut on the hub to be removed
+3. ?w - tool: the wrench to be used for unfastening the hub
+
+Preconditions:
+```
+(and
+    (nut-on-hub ?n ?h)
+    (nut-loose ?n ?h)
+    (hub-jacked-up ?h)
+    (robot-holding ?w)
+    (is-wrench ?w)
+)
+```
+
+Effects:
+```
+(and
+    (not (nut-on-hub ?n ?h))
+    (robot-holding ?n)
+    (hub-unfastened ?h)
+)
+```
+
+New Predicates:
+1. (hub-unfastened ?h - hub): true if the hub ?h is unfastened
+
+
+####################
+Action: Fasten a hub
+####################
+--------------------
+You can create and define new predicates, but you may also reuse the following predicates:
+1. (container-closed ?c - container): true if the container ?c is closed
+2. (container-open ?c - container): true if the container ?c is open
+3. (object-in-container ?x - small_object ?c - container): true if the object ?x is inside the container ?c
+4. (robot-holding ?x - small_object): true if the robot is holding the object ?x
+5. (nut-on-hub ?n - nut ?h - hub): true if the nut ?n is on the hub ?h
+6. (hub-on-ground ?h - hub): true if the hub ?h is on the ground (not jacked-up)
+7. (nut-tight ?n - nut ?h - hub): true if the nut ?n is tight on the hub ?h
+8. (nut-loose ?n - nut ?h - hub): true if the nut ?n is loose on the hub ?h
+9. (is-wrench ?w - tool): true if the tool ?w is a wrench
+10. (is-jack ?j - tool): true if the tool ?j is a jack
+11. (hub-jacked-up ?h - hub): true if the hub ?h is jacked up (not on the ground)
+12. (hub-unfastened ?h - hub): true if the hub ?h is unfastened
+--------------------
+--------------------
+1. ?h - hub: the hub to fasten
+2. ?n - nut: the nut to put on the hub
+
+Preconditions:
+```
+(and
+    (nut-loose ?n ?h)
+    (hub-jacked-up ?h)
+    (hub-unfastened ?h)
+)
+```
+
+Effects:
+```
+(and
+    (nut-on-hub ?n ?h)
+    (not (hub-unfastened ?h))
+)
+```
+
+New Predicates:
+No newly defined predicate
+
+
+####################
+Action: Remove wheel from hub
+####################
+--------------------
+You can create and define new predicates, but you may also reuse the following predicates:
+1. (container-closed ?c - container): true if the container ?c is closed
+2. (container-open ?c - container): true if the container ?c is open
+3. (object-in-container ?x - small_object ?c - container): true if the object ?x is inside the container ?c
+4. (robot-holding ?x - small_object): true if the robot is holding the object ?x
+5. (nut-on-hub ?n - nut ?h - hub): true if the nut ?n is on the hub ?h
+6. (hub-on-ground ?h - hub): true if the hub ?h is on the ground (not jacked-up)
+7. (nut-tight ?n - nut ?h - hub): true if the nut ?n is tight on the hub ?h
+8. (nut-loose ?n - nut ?h - hub): true if the nut ?n is loose on the hub ?h
+9. (is-wrench ?w - tool): true if the tool ?w is a wrench
+10. (is-jack ?j - tool): true if the tool ?j is a jack
+11. (hub-jacked-up ?h - hub): true if the hub ?h is jacked up (not on the ground)
+12. (hub-unfastened ?h - hub): true if the hub ?h is unfastened
+--------------------
+--------------------
+1. ?w - wheel: the wheel to be removed
+2. ?h - hub: the hub from which the wheel is to be removed
+
+Preconditions:
+```
+(and
+    (hub-jacked-up ?h)
+    (hub-unfastened ?h)
+    (wheel-on-hub ?w ?h)
+)
+```
+
+Effects:
+```
+(and
+    (not (wheel-on-hub ?w ?h))
+    (robot-holding ?w)
+)
+```
+
+New Predicates:
+1. (wheel-on-hub ?w - wheel ?h - hub): true if the wheel ?w is on the hub ?h
+
+
+####################
+Action: Put wheel on hub
+####################
+--------------------
+You can create and define new predicates, but you may also reuse the following predicates:
+1. (container-closed ?c - container): true if the container ?c is closed
+2. (container-open ?c - container): true if the container ?c is open
+3. (object-in-container ?x - small_object ?c - container): true if the object ?x is inside the container ?c
+4. (robot-holding ?x - small_object): true if the robot is holding the object ?x
+5. (nut-on-hub ?n - nut ?h - hub): true if the nut ?n is on the hub ?h
+6. (hub-on-ground ?h - hub): true if the hub ?h is on the ground (not jacked-up)
+7. (nut-tight ?n - nut ?h - hub): true if the nut ?n is tight on the hub ?h
+8. (nut-loose ?n - nut ?h - hub): true if the nut ?n is loose on the hub ?h
+9. (is-wrench ?w - tool): true if the tool ?w is a wrench
+10. (is-jack ?j - tool): true if the tool ?j is a jack
+11. (hub-jacked-up ?h - hub): true if the hub ?h is jacked up (not on the ground)
+12. (hub-unfastened ?h - hub): true if the hub ?h is unfastened
+13. (wheel-on-hub ?w - wheel ?h - hub): true if the wheel ?w is on the hub ?h
+--------------------
+--------------------
+1. ?w - wheel: the wheel to put on the hub
+2. ?h - hub: the hub to put the wheel on
+
+Preconditions:
+```
+(and
+    (robot-holding ?w)
+    (hub-unfastened ?h)
+    (hub-jacked-up ?h)
+)
+```
+
+Effects:
+```
+(and
+    (not (robot-holding ?w))
+    (wheel-on-hub ?w ?h)
+)
+```
+
+New Predicates:
+No newly defined predicate
+
+
+####################
+Action: Inflate wheel
+####################
+--------------------
+You can create and define new predicates, but you may also reuse the following predicates:
+1. (container-closed ?c - container): true if the container ?c is closed
+2. (container-open ?c - container): true if the container ?c is open
+3. (object-in-container ?x - small_object ?c - container): true if the object ?x is inside the container ?c
+4. (robot-holding ?x - small_object): true if the robot is holding the object ?x
+5. (nut-on-hub ?n - nut ?h - hub): true if the nut ?n is on the hub ?h
+6. (hub-on-ground ?h - hub): true if the hub ?h is on the ground (not jacked-up)
+7. (nut-tight ?n - nut ?h - hub): true if the nut ?n is tight on the hub ?h
+8. (nut-loose ?n - nut ?h - hub): true if the nut ?n is loose on the hub ?h
+9. (is-wrench ?w - tool): true if the tool ?w is a wrench
+10. (is-jack ?j - tool): true if the tool ?j is a jack
+11. (hub-jacked-up ?h - hub): true if the hub ?h is jacked up (not on the ground)
+12. (hub-unfastened ?h - hub): true if the hub ?h is unfastened
+13. (wheel-on-hub ?w - wheel ?h - hub): true if the wheel ?w is on the hub ?h
+--------------------
+--------------------
+1. ?w - wheel: the wheel to inflate
+2. ?p - tool: the pump to inflate the wheel
+
+Preconditions:
+```
+(and
+    (robot-holding ?p)
+    (is-pump ?p)
+    (robot-holding ?w)
+    (is-wheel ?w)
+    (wheel-intact ?w)
+)
+```
+
+Effects:
+```
+(and
+    (not (wheel-deflated ?w))
+    (wheel-inflated ?w)
+)
+```
+
+New Predicates:
+1. (is-pump ?p - tool): true if the tool ?p is a pump
+2. (is-wheel ?w - wheel): true if the object ?w is a wheel
+3. (wheel-intact ?w - wheel): true if the wheel ?w is intact
+4. (wheel-deflated ?w - wheel): true if the wheel ?w is deflated
+5. (wheel-inflated ?w - wheel): true if the wheel ?w is inflated
+
+--------------------
+Extracted predicates:
+
+1. (container-closed ?c - container): true if the container ?c is closed
+2. (container-open ?c - container): true if the container ?c is open
+3. (object-in-container ?x - small_object ?c - container): true if the object ?x is inside the container ?c
+4. (robot-holding ?x - small_object): true if the robot is holding the object ?x
+5. (nut-on-hub ?n - nut ?h - hub): true if the nut ?n is on the hub ?h
+6. (hub-on-ground ?h - hub): true if the hub ?h is on the ground (not jacked-up)
+7. (nut-tight ?n - nut ?h - hub): true if the nut ?n is tight on the hub ?h
+8. (nut-loose ?n - nut ?h - hub): true if the nut ?n is loose on the hub ?h
+9. (is-wrench ?w - tool): true if the tool ?w is a wrench
+10. (is-jack ?j - tool): true if the tool ?j is a jack
+11. (hub-jacked-up ?h - hub): true if the hub ?h is jacked up (not on the ground)
+12. (hub-unfastened ?h - hub): true if the hub ?h is unfastened
+13. (wheel-on-hub ?w - wheel ?h - hub): true if the wheel ?w is on the hub ?h
+14. (is-pump ?p - tool): true if the tool ?p is a pump
+15. (is-wheel ?w - wheel): true if the object ?w is a wheel
+16. (wheel-intact ?w - wheel): true if the wheel ?w is intact
+17. (wheel-deflated ?w - wheel): true if the wheel ?w is deflated
+18. (wheel-inflated ?w - wheel): true if the wheel ?w is inflated

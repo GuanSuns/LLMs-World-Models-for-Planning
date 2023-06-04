@@ -1,0 +1,92 @@
+{
+    "Load a package into a truck": {
+        "action_desc": "This action enables the agent to load a package into a truck. For example, load a package_1 into a truck_1.",
+        "llm_output": "1. ?p - package: the package to load\n2. ?t - truck: the truck to load the package into\n3. ?l - location: the location where the package and truck are\n\nPreconditions:\n```\n(and\n    (package-at ?p ?l)\n    (truck-at ?t ?l)\n)\n```\n\nEffects:\n```\n(and\n    (not (package-at ?p ?l))\n    (package-in-truck ?p ?t)\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "translated_preconditions": [
+            "the package ?p is at the location ?l",
+            "the truck ?t is at the location ?l"
+        ],
+        "translated_effects": [
+            "the package ?p is not at the location ?l",
+            "the package ?p is in the truck ?t"
+        ],
+        "annotation": []
+    },
+    "Unload a package from a truck": {
+        "action_desc": "This action enables the agent to unload a package from a truck. For example, unload a package_1 from a truck_1.",
+        "llm_output": "1. ?p - package: the package to unload\n2. ?t - truck: the truck from which the package will be unloaded\n3. ?l - location: the location where the package will be unloaded\n\nPreconditions:\n```\n(and\n    (package-in-truck ?p ?t)\n    (truck-at ?t ?l)\n)\n```\n\nEffects:\n```\n(and\n    (not (package-in-truck ?p ?t))\n    (package-at ?p ?l)\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "translated_preconditions": [
+            "the package ?p is in the truck ?t",
+            "the truck ?t is at the location ?l"
+        ],
+        "translated_effects": [
+            "the package ?p is not in the truck ?t",
+            "the package ?p is at the location ?l"
+        ],
+        "annotation": []
+    },
+    "Load a package into an airplane": {
+        "action_desc": "This action enables the agent to load a package into an airplane. For example, load a package_1 into an airplane_1.",
+        "llm_output": "1. ?p - package: the package to load into the airplane\n2. ?a - plane: the airplane to load the package into\n3. ?l - location: the location where the airplane and package are\n\nPreconditions:\n```\n(and\n    (package-at ?p ?l)\n    (plane-at ?a ?l)\n    (location-is-airport ?l)\n)\n```\n\nEffects:\n```\n(and\n    (not (package-at ?p ?l))\n    (package-in-plane ?p ?a)\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "translated_preconditions": [
+            "the package ?p is at the location ?l",
+            "the airplane ?a is at the location ?l",
+            "the location ?l is an airport"
+        ],
+        "translated_effects": [
+            "the package ?p is not at the location ?l",
+            "the package ?p is in the airplane ?a"
+        ],
+        "annotation": []
+    },
+    "Unload a package from an airplane": {
+        "action_desc": "This action enables the agent to unload a package from an airplane. For example, unload a package_1 from an airplane_1.",
+        "llm_output": "1. ?p - package: the package to unload\n2. ?a - plane: the airplane from which the package will be unloaded\n3. ?l - location: the location where the package will be unloaded\n\nPreconditions:\n```\n(and\n    (package-in-plane ?p ?a)\n    (plane-at ?a ?l)\n    (location-is-airport ?l)\n)\n```\n\nEffects:\n```\n(and\n    (not (package-in-plane ?p ?a))\n    (package-at ?p ?l)\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "translated_preconditions": [
+            "the package ?p is in the airplane ?a",
+            "the airplane ?a is at the location ?l",
+            "the location ?l is an airport"
+        ],
+        "translated_effects": [
+            "the package ?p is not in the airplane ?a",
+            "the package ?p is at the location ?l"
+        ],
+        "annotation": []
+    },
+    "Drive a truck from one location to another in a city": {
+        "action_desc": "This action enables the agent to drive a truck from one location to another in a city. For example, drive a truck_1 from location_1 to location_2 in city_1.",
+        "llm_output": "1. ?t - truck: the truck to be driven\n2. ?from - location: the starting location of the truck\n3. ?to - location: the destination location of the truck\n4. ?c - city: the city in which the truck is being driven\n\nPreconditions:\n```\n(and\n    (truck-at ?t ?from)\n    (location-in-city ?from ?c)\n    (location-in-city ?to ?c)\n)\n```\n\nEffects:\n```\n(and\n    (not (truck-at ?t ?from))\n    (truck-at ?t ?to)\n    (move-all-packages ?t ?from ?to)\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "translated_preconditions": [
+            "the truck ?t is at the location ?from",
+            "the location ?from is in the city ?c",
+            "the location ?to is in the city ?c"
+        ],
+        "translated_effects": [
+            "the truck ?t is not at the location ?from",
+            "the truck ?t is at the location ?to",
+            "all packages in the truck ?t are moved from location ?from to location ?to"
+        ],
+        "annotation": [
+            "You need to make sure the starting location and the destination are two different locations in a city"
+        ]
+    },
+    "Fly an airplane from one city to another": {
+        "action_desc": "This action enables the agent to fly an airplane from one city's airport to another. The airports are locations in the city. For example, fly an airplane_1 from location_0 to location_1.",
+        "llm_output": "1. ?a - plane: the airplane to fly\n2. ?from - location: the departure location (airport) in the city\n3. ?to - location: the destination location (airport) in the city\n4. ?c1 - city: the city where the departure location is\n5. ?c2 - city: the city where the destination location is\n\nPreconditions:\n```\n(and\n    (plane-at ?a ?from)\n    (location-is-airport ?from)\n    (location-is-airport ?to)\n    (location-in-city ?from ?c1)\n    (location-in-city ?to ?c2)\n    (not (= ?from ?to))\n    (not (= ?c1 ?c2))\n)\n```\n\nEffects:\n```\n(and\n    (not (plane-at ?a ?from))\n    (plane-at ?a ?to)\n    (move-all-packages-in-plane ?a ?from ?to)\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "translated_preconditions": [
+            "the airplane ?a is at the location ?from",
+            "the location ?from is an airport",
+            "the location ?to is an airport",
+            "the location ?from is in the city ?c1",
+            "the location ?to is in the city ?c2",
+            "the locations ?from and ?to are not the same",
+            "the cities ?c1 and ?c2 are not the same"
+        ],
+        "translated_effects": [
+            "the airplane ?a is not at the location ?from",
+            "the airplane ?a is at the location ?to",
+            "all packages in the airplane ?a are moved from location ?from to location ?to"
+        ],
+        "annotation": []
+    }
+}

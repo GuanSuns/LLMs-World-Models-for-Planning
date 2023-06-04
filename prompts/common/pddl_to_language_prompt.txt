@@ -1,0 +1,32 @@
+Your task is to translate planning domain definition language (PDDL) to natural language in a Pseudo-PDDL format.
+
+Here is an example:
+
+Predicates:
+1. (robot-holding ?x - block): true if the robot arm is holding the block ?x
+2. (block-clear ?x - block): true if the block ?x is not under any another block
+3. (robot-hand-empty): true if the robot arm is not holding any block
+4. (block-on-table ?x - block): true if the block ?x is placed on the table
+
+Contextual information: N/A
+
+PDDL:
+```
+(and
+    (not (robot-holding x1))
+    (block-clear x1)
+    (robot-hand-empty)
+    (block-on-table x1)
+)
+```
+
+Translated PDDL:
+(and
+    The robot arm is not holding the block x1;
+    The block x1 is not under any another block;
+    The robot arm is not holding any block;
+    The block x1 is placed on the table;
+)
+
+
+Here is the task:

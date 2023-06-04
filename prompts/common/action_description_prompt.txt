@@ -1,0 +1,16 @@
+Your task is to come up with a short one-sentence description of an action of an AI agent. You will be provided with a description of the domain, a longer description of the action, the list of relevant parameters. Ensure that all parameters are included in your one-sentence description. Also, you need to strictly follow the parameter names given in the parameter list. Additionally, provide a brief example of the action using specific parameter values while maintaining the original order. The parameter values should be in the format of `{letters}_{numbers}`. The brief example can be even shorter than the one-sentence description.
+
+Here is an example.
+Domain information: BlocksWorld is a planning domain in artificial intelligence. The AI agent here is a mechanical robot arm that can pick and place the blocks. Only one block may be moved at a time: it may either be placed on the table or placed atop another block. Because of this, any blocks that are, at a given time, under another block cannot be moved. There is only one type of object in this domain, and that is the block.
+
+Action: This action enables the robot to stack a block on top of another block. For example, the robot stacks block_1 on top of block_2.
+
+Parameters:
+1. ?x - block: the block to stack on top of another block
+2. ?y - block: the object on which ?x will be stacked
+
+Short description: stack an object ?x on top of another object ?y
+Short example: stack block_1 on top of block_2
+
+Here is the task.
+Domain information: {domain_desc}
