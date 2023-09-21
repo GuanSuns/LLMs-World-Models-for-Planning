@@ -2,7 +2,7 @@
 
 Python implementation of the paper: [Leveraging Pre-trained Large Language Models to Construct and Utilize World Models for Model-based Task Planning](https://guansuns.github.io/pages/llm-dm).
 
-**Update**: The paper has been accepted to NeurIPS 2023.
+**Update: The paper has been accepted to NeurIPS 2023.**
 
 **Note**: The code has been refactored for better readability. If you encounter any problem, feel free to email lguan9@asu.edu.
 
