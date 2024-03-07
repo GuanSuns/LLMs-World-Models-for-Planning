@@ -30,7 +30,7 @@ While it may be easy for PDDL experts to directly inspect and correct the genera
 **Examples**: We provide the constructed models for two IPC domains (i.e., logistics and tyreworld) as examples (the results were obtained on 06/03/23). The experiment records and models are located in the `results` directory.
 
 
-### Step 3. Plan generation
+### Step 3. Plan Generation
 
 To support future research, we are sharing the test samples for the household domain, which can be found in `experiments/household_planning_tasks.json`. Each test case comprises an instruction and a list of object states. For an example of how to read each test case, please refer to `experiments/example_task_reader.py`.
 
