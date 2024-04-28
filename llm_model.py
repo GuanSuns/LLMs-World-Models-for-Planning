@@ -1,14 +1,16 @@
 import os
+import traceback
 
-from retry import retry
 import openai
+from openai import OpenAI
+from wrapt_timeout_decorator import timeout
 openai.api_key = os.environ["OPENAI_API_KEY"]
 
 
-@retry(tries=2, delay=60)
-def connect_openai(engine, messages, temperature, max_tokens,
+@timeout(dec_timeout=30, use_signals=False)
+def connect_openai(client, engine, messages, temperature, max_tokens,
                    top_p, frequency_penalty, presence_penalty, stop):
-    return openai.ChatCompletion.create(
+    return client.chat.completions.create(
         model=engine,
         messages=messages,
         temperature=temperature,
@@ -24,6 +26,7 @@ class GPT_Chat:
     def __init__(self, engine, stop=None, max_tokens=1000, temperature=0, top_p=1,
                  frequency_penalty=0.0, presence_penalty=0.0):
         self.engine = engine
+        self.gpt_client = OpenAI()
         self.max_tokens = max_tokens
         self.temperature = temperature
         self.top_p = top_p
@@ -45,6 +48,7 @@ class GPT_Chat:
             try:
                 print('[INFO] connecting to the LLM ...')
                 response = connect_openai(
+                    client=self.gpt_client,
                     engine=self.engine,
                     messages=messages,
                     temperature=self.temperature,
@@ -54,10 +58,11 @@ class GPT_Chat:
                     presence_penalty=self.presence_penalty,
                     stop=self.stop
                 )
-                llm_output = response['choices'][0]['message']['content']
+                llm_output = response.choices[0].message.content
                 conn_success = True
             except Exception as e:
                 print(f'[ERROR] LLM error: {e}')
+                print(traceback.format_exc())
                 if end_when_error:
                     break
         return conn_success, llm_output
