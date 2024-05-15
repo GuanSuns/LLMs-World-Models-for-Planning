@@ -1,0 +1,187 @@
+{
+    "Go to a Furniture Piece or an Appliance": {
+        "parameters": [
+            "?x - furnitureAppliance: the furniture or appliance the robot is currently at",
+            "?y - furnitureAppliance: the furniture or appliance the robot wants to navigate to"
+        ],
+        "preconditions": "(and\n  (robot-at ?x)\n  (not (= ?x ?y))\n)",
+        "effects": "(and\n  (not (robot-at ?x))\n  (robot-at ?y)\n)"
+    },
+    "Pick up an Object on or in a Furniture Piece or an Appliance": {
+        "parameters": [
+            "?x - householdObject: the object to pick up",
+            "?y - furnitureAppliance: the furniture or appliance where the object is located"
+        ],
+        "preconditions": "(and\n  (robot-at ?y)\n  (object-on ?x ?y)\n  (pickupable ?x)\n  (or (not (stackable ?x)) (and (stackable ?x) (not (object-stacked ?x)) (object-clear ?x) ) )\n  (robot-hand-empty)\n  (or (not (openable ?y)) (opened ?y) )\n)",
+        "effects": "(and\n  (not (object-on ?x ?y))\n  (robot-holding ?x)\n  (not (robot-hand-empty))\n)"
+    },
+    "Put an Object on or in a Furniture Piece or an Appliance": {
+        "parameters": [
+            "?x - householdObject: the object to put in/on the furniture or appliance",
+            "?y - furnitureAppliance: the furniture or appliance to put the object in/on"
+        ],
+        "preconditions": "(and\n  (robot-at ?y)\n  (robot-holding ?x)\n  (pickupable ?x)\n  (or (not (openable ?y)) (opened ?y) )\n)",
+        "effects": "(and\n  (not (robot-holding ?x))\n  (robot-hand-empty)\n  (object-on ?x ?y)\n)"
+    },
+    "Stack Objects": {
+        "parameters": [
+            "?x - householdObject: the object to stack on top of another object",
+            "?y - householdObject: the object on which ?x will be stacked",
+            "?z - furnitureAppliance: the furniture or appliance on which both objects are placed"
+        ],
+        "preconditions": "(and\n  (robot-holding ?x)\n  (object-on ?y ?z)\n  (object-clear ?y)\n  (flat-surface ?z)\n  (stackable ?x)\n  (stackable ?y)\n  (robot-at ?z)\n)",
+        "effects": "(and\n  (not (robot-holding ?x))\n  (not (object-clear ?y))\n  (robot-hand-empty)\n  (object-on ?x ?z)\n  (object-stacked ?x)\n  (object-on-top-of ?x ?y)\n)"
+    },
+    "Unstack Objects": {
+        "parameters": [
+            "?x - householdObject: the object to unstack from another object",
+            "?y - householdObject: the object that ?x is stacked on",
+            "?z - furnitureAppliance: the furniture or appliance where the objects are stacked"
+        ],
+        "preconditions": "(and\n  (robot-at ?z)\n  (object-on ?x ?z)\n  (object-on ?y ?z)\n  (pickupable ?x)\n  (object-stacked ?x)\n  (object-clear ?x)\n  (robot-hand-empty)\n  (object-on-top-of ?x ?y)\n)",
+        "effects": "(and\n  (not (object-on ?x ?z))\n  (not (object-stacked ?x))\n  (not (robot-hand-empty))\n  (robot-holding ?x)\n  (object-clear ?y)\n  (not (object-on-top-of ?x ?y))\n)"
+    },
+    "Open a Furniture Piece or an Appliance": {
+        "parameters": [
+            "?y - furnitureAppliance: the furniture or appliance to be opened"
+        ],
+        "preconditions": "(and\n  (robot-at ?y)\n  (openable ?y)\n  (closed ?y)\n  (robot-hand-empty)\n)",
+        "effects": "(and\n  (not (closed ?y))\n  (opened ?y)\n)"
+    },
+    "Close a Furniture Piece or an Appliance": {
+        "parameters": [
+            "?y - furnitureAppliance: the furniture or appliance to close"
+        ],
+        "preconditions": "(and\n  (robot-at ?y)\n  (openable ?y)\n  (opened ?y)\n  (robot-hand-empty)\n)",
+        "effects": "(and\n  (not (opened ?y))\n  (closed ?y)\n)"
+    },
+    "Toggle a Small Appliance On": {
+        "parameters": [
+            "?x - householdObject: the small appliance to toggle on",
+            "?y - furnitureAppliance: the furniture or appliance where the small appliance is located"
+        ],
+        "preconditions": "(and\n  (robot-at ?y)\n  (object-on ?x ?y)\n  (robot-hand-empty)\n  (not (appliance-on ?x))\n  (toggleable ?x)\n)",
+        "effects": "(and\n  (appliance-on ?x)\n)"
+    },
+    "Toggle a Small Appliance Off": {
+        "parameters": [
+            "?x - householdObject: the small appliance to toggle off",
+            "?y - furnitureAppliance: the furniture or appliance where the small appliance is located"
+        ],
+        "preconditions": "(and\n  (robot-at ?y)\n  (object-on ?x ?y)\n  (appliance-on ?x)\n  (toggleable ?x)\n  (robot-hand-empty)\n)",
+        "effects": "(and\n  (not (appliance-on ?x))\n)"
+    },
+    "Slice Objects": {
+        "parameters": [
+            "?x - householdObject: the object to slice",
+            "?k - householdObject: the knife to use for slicing",
+            "?y - furnitureAppliance: the furniture or appliance with a flat surface for manipulation",
+            "?z - smallReceptacle: the cutting board on which the object is placed"
+        ],
+        "preconditions": "(and\n  (robot-at ?y)\n  (object-in ?x ?z)\n  (object-on ?z ?y)\n  (robot-holding ?k)\n  (sliceable ?x)\n  (cutting-board ?z)\n  (knife ?k)\n  (flat-surface ?y)\n  (object-whole ?x)\n)",
+        "effects": "(and\n  (not (object-whole ?x))\n  (object-sliced ?x)\n)"
+    },
+    "Heat Food with a Microwave": {
+        "parameters": [
+            "?x - householdObject: the food to heat up",
+            "?y - furnitureAppliance: the microwave to use",
+            "?z - smallReceptacle: the small receptacle containing the food"
+        ],
+        "preconditions": "(and\n  (robot-at ?y)\n  (object-in ?x ?z)\n  (is-small-receptacle ?z)\n  (object-on ?z ?y)\n  (closed ?y)\n  (not (food-heated ?x))\n  (microwave ?y)\n)",
+        "effects": "(and\n  (not (pickupable ?x))\n  (food-heated ?x)\n)"
+    },
+    "Heat Food with Pan": {
+        "parameters": [
+            "?f - householdObject: the food to be heated",
+            "?p - smallReceptacle: the pan to be used for heating the food",
+            "?s - furnitureAppliance: the stove burner on which the pan is placed"
+        ],
+        "preconditions": "(and\n  (robot-at ?s)\n  (object-in ?f ?p)\n  (object-on ?p ?s)\n  (pan ?p)\n  (stove-burner ?s)\n  (robot-hand-empty)\n)",
+        "effects": "(and\n  (not (pickupable ?f))\n  (food-heated-pan ?f)\n)"
+    },
+    "Transfer Food from One Small Receptacle to Another": {
+        "parameters": [
+            "?food - householdObject: the food to be transferred",
+            "?receptacle1 - smallReceptacle: the small receptacle from which the food will be transferred",
+            "?receptacle2 - smallReceptacle: the small receptacle to which the food will be transferred",
+            "?furniture - furnitureAppliance: the furniture piece with a flat surface where the transfer will take place"
+        ],
+        "preconditions": "(and\n    (robot-at ?furniture)\n    (object-on ?receptacle1 ?furniture)\n    (object-on ?receptacle2 ?furniture)\n    (object-in ?food ?receptacle1)\n    (is-small-receptacle ?receptacle1)\n    (is-small-receptacle ?receptacle2)\n    (flat-surface ?furniture)\n    (robot-hand-empty)\n    (or (not (stackable ?receptacle1)) (and (not (object-stacked ?receptacle1)) (object-clear ?receptacle1)))\n    (or (not (stackable ?receptacle2)) (and (not (object-stacked ?receptacle2)) (object-clear ?receptacle2)))\n    (or (not (openable-receptacle ?receptacle1)) (opened-receptacle ?receptacle1))\n    (or (not (openable-receptacle ?receptacle2)) (opened-receptacle ?receptacle2))\n)",
+        "effects": "(and\n  (not (object-in ?food ?receptacle1))\n  (object-in ?food ?receptacle2)\n)"
+    },
+    "Puts an Object onto or into a Small Receptacle": {
+        "parameters": [
+            "?x - householdObject: the object to put into/onto the small receptacle",
+            "?y - furnitureAppliance: the furniture or appliance with a flat surface for manipulation",
+            "?z - smallReceptacle: the small receptacle to put the object into/onto"
+        ],
+        "preconditions": "(and\n  (robot-at ?y)\n  (pickupable ?x)\n  (flat-surface ?y)\n  (robot-holding ?x)\n  (is-small-receptacle ?z)\n  (object-on ?z ?y)\n  (or (not (stackable ?z)) (and (object-clear ?z) (not (object-stacked ?z))))\n  (or (not (openable-receptacle ?z)) (opened-receptacle ?z) )\n)",
+        "effects": "(and\n  (not (robot-holding ?x))\n  (robot-hand-empty)\n  (object-in ?x ?z)\n)"
+    },
+    "Pick up an Object on or in a Small Receptacle": {
+        "parameters": [
+            "?x - householdObject: the object to pick up",
+            "?y - furnitureAppliance: the furniture or appliance where the object is located",
+            "?z - smallReceptacle: the small receptacle containing the object"
+        ],
+        "preconditions": "(and\n  (robot-at ?y)\n  (object-in ?x ?z)\n  (object-on ?z ?y)\n  (pickupable ?x)\n  (is-small-receptacle ?z)\n  (flat-surface ?y)\n  (robot-hand-empty)\n  (or (not (stackable ?z)) (and (stackable ?z) (not (object-stacked ?z)) (object-clear ?z) ) )\n  (or (not (openable-receptacle ?z)) (opened-receptacle ?z) )\n)",
+        "effects": "(and\n  (not (object-in ?x ?z))\n  (not (robot-hand-empty))\n  (robot-holding ?x)\n)"
+    },
+    "Open a Small Receptacle": {
+        "parameters": [
+            "?x - smallReceptacle: the small receptacle to be opened",
+            "?y - furnitureAppliance: the furniture or appliance on which the small receptacle is placed"
+        ],
+        "preconditions": "(and\n  (robot-at ?y)\n  (object-on ?x ?y)\n  (openable-receptacle ?x)\n  (flat-surface ?y)\n  (robot-hand-empty)\n  (closed-receptacle ?x)\n  (or (not (stackable ?x)) (and (stackable ?x) (not (object-stacked ?x)) (object-clear ?x) ) )\n)",
+        "effects": "(and\n  (not (closed-receptacle ?x))\n  (opened-receptacle ?x)\n)"
+    },
+    "Close a Small Receptacle": {
+        "parameters": [
+            "?x - smallReceptacle: the small receptacle to close",
+            "?y - furnitureAppliance: the furniture or appliance on which the small receptacle is placed"
+        ],
+        "preconditions": "(and\n  (robot-at ?y)\n  (object-on ?x ?y)\n  (openable-receptacle ?x)\n  (opened-receptacle ?x)\n  (flat-surface ?y)\n  (robot-hand-empty)\n  (or (not (stackable ?x)) (and (stackable ?x) (not (object-stacked ?x)) (object-clear ?x) ) )\n)",
+        "effects": "(and\n  (not (opened-receptacle ?x))\n  (closed-receptacle ?x)\n)"
+    },
+    "Mash Food with a Blender": {
+        "parameters": [
+            "?b - smallReceptacle: the blender to be used for mashing the food",
+            "?f - householdObject: the food to be mashed",
+            "?y - furnitureAppliance: the furniture or appliance where the blender is located"
+        ],
+        "preconditions": "(and\n  (robot-at ?y)\n  (object-on ?b ?y)\n  (object-in ?f ?b)\n  (object-sliced ?f)\n  (is-small-receptacle ?b)\n  (blender ?b)\n  (not (appliance-on ?b))\n  (robot-hand-empty)\n)",
+        "effects": "(and\n  (object-mashed ?f)\n  (not (pickupable ?f))\n)"
+    },
+    "Wash an Object": {
+        "parameters": [
+            "?x - householdObject: the object to be washed",
+            "?y - furnitureAppliance: the sink or basin where the object will be washed"
+        ],
+        "preconditions": "(and\n  (robot-at ?y)\n  (washable ?x)\n  (robot-holding ?x)\n  (sink-or-basin ?y)\n)",
+        "effects": "(and\n  (not (object-dirty ?x))\n  (object-washed ?x)\n)"
+    },
+    "Wipe a Surface": {
+        "parameters": [
+            "?x - furnitureAppliance: the furniture or appliance to be wiped and cleaned",
+            "?c - householdObject: the cloth to be used for wiping and cleaning"
+        ],
+        "preconditions": "(and\n  (robot-at ?x)\n  (robot-holding ?c)\n  (washable ?c)\n  (object-washed ?c)\n  (cloth ?c)\n)",
+        "effects": "(and\n  (not (object-washed ?c))\n  (object-dirty ?c)\n  (furniture-cleaned ?x)\n)"
+    },
+    "Vacuum a Carpet": {
+        "parameters": [
+            "?v - householdObject: the handheld vacuum cleaner to use",
+            "?c - furnitureAppliance: the carpet to vacuum"
+        ],
+        "preconditions": "(and\n  (robot-holding ?v)\n  (robot-at ?c)\n  (pickupable ?v)\n  (not (dustbin-full ?v))\n  (not (carpet-clean ?c))\n  (handheld-vacuum-cleaner ?v)\n  (carpet ?c)\n)",
+        "effects": "(and\n  (carpet-clean ?c)\n  (dustbin-full ?v)\n)"
+    },
+    "Empty a Vacuum Cleaner": {
+        "parameters": [
+            "?v - householdObject: the vacuum cleaner with a full dust bin",
+            "?t - furnitureAppliance: the trash can where the dust will be dumped"
+        ],
+        "preconditions": "(and\n  (robot-at ?t)\n  (robot-holding ?v)\n  (dustbin-full ?v)\n  (pickupable ?v)\n  (trash-can ?t)\n  (handheld-vacuum-cleaner ?v)\n  (or (not (openable ?t)) (opened ?t) )\n)",
+        "effects": "(and\n  (not (dustbin-full ?v))\n)"
+    }
+}

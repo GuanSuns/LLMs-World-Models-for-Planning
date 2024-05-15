@@ -1,0 +1,31 @@
+(robot-at ?x - furnitureAppliance): true if the robot is at the furniture or appliance ?x
+(object-on ?x - householdObject ?y - furnitureAppliance): true if the object ?x is on or in the furniture or appliance ?y
+(pickupable ?x - householdObject): true if the object ?x can be picked up by the robot
+(object-stacked ?x - householdObject): true if the object ?x is stacked on top of other household items
+(openable ?y - furnitureAppliance): true if the furniture or appliance ?y can be opened
+(opened ?y - furnitureAppliance): true if the furniture or appliance ?y is opened
+(robot-holding ?x - householdObject): true if the robot is holding the object ?x
+(robot-hand-empty): true if the robot's gripper is empty
+(object-clear ?x - householdObject): true if the object ?x is not under any another household object
+(appliance-on ?x - householdObject): true if the small appliance ?x is switched on
+(sliceable ?x - householdObject): true if the object ?x can be sliced
+(cutting-board ?z - householdObject): true if the object ?z is a cutting board
+(knife ?k - householdObject): true if the object ?k is a knife
+(flat-surface ?y - furnitureAppliance): true if the furniture or appliance ?y has a flat surface for manipulation
+(object-whole ?x - householdObject): true if the object ?x is whole and not sliced
+(object-sliced ?x - householdObject): true if the object ?x has been sliced
+(food-heated ?x - householdObject): true if the food ?x has been heated in the microwave
+(food-heated-pan ?x - householdObject): true if the food ?x has been heated with a pan
+(is-small-receptacle ?x - householdObject): true if the object ?x is a small receptacle like bowls, lunch boxes, plates, etc.
+(object-in ?x - householdObject ?z - smallReceptacle): true if the object ?x is in the small receptacle ?z
+(openable-receptacle ?x - smallReceptacle): true if the small receptacle ?x can be opened
+(opened-receptacle ?x - smallReceptacle): true if the small receptacle ?x is opened
+(object-mashed ?x - householdObject): true if the object ?x has been mashed in the blender
+(washable ?x - householdObject): true if the object ?x can be washed
+(object-washed ?x - householdObject): true if the object ?x has been washed
+(object-dirty ?x - householdObject): true if the object ?x is dirty
+(dustbin-full ?v - householdObject): true if the dust bin of the vacuum cleaner ?v is full
+(carpet-clean ?c - furnitureAppliance): true if the carpet ?c is clean
+(closed ?y - furnitureAppliance): true if the furniture or appliance ?y is closed
+(closed-receptacle ?x - smallReceptacle): true if the small receptacle ?x is closed
+(furniture-cleaned ?x - furnitureAppliance): true if the furniture or appliance ?x has been wiped and cleaned

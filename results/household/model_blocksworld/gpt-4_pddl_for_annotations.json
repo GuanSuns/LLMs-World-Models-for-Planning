@@ -1,0 +1,184 @@
+{
+    "Go to a Furniture Piece or an Appliance": {
+        "action_desc": "This action enables the robot to navigate from one normally immovable piece of furniture to another (e.g., dining tables, side tables, cabinets, and sinks) or an appliance (e.g., refrigerators, coffee makers, microwaves, and washers).",
+        "llm_output": "1. ?x - furnitureAppliance: the furniture or appliance the robot is currently at\n2. ?y - furnitureAppliance: the furniture or appliance the robot wants to navigate to\n\nPreconditions:\n```\n(and\n    (robot-at ?x)\n    (not (= ?x ?y))\n)\n```\n\nEffects:\n```\n(and\n    (not (robot-at ?x))\n    (robot-at ?y)\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "annotation": []
+    },
+    "Pick up an Object on or in a Furniture Piece or an Appliance": {
+        "action_desc": "This action enables the robot to pick up an object object_1 in/on a large piece of furniture (e.g., dining tables, drawers, cabinets) or an appliance (e.g., dishwashers and refrigerators). For example, the robot pick up coffee_mug_1 on dining_table_1, the robot pick up fork_1 in drawer_1, or the robot pick up apple_1 in refrigerator_1. This action is only applicable for objects that are pickupable by the robot. The furniture piece or appliance should be opened if it is openable. The object to pick up should not be stacked on top of other household items.",
+        "llm_output": "1. ?x - householdObject: the object to pick up\n2. ?y - furnitureAppliance: the furniture or appliance where the object is located\n\nPreconditions:\n```\n(and\n    (robot-at ?y)\n    (object-on ?x ?y)\n    (pickupable ?x)\n    (not (object-stacked ?x))\n    (robot-hand-empty)\n    (or\n        (not (openable ?y))\n        (opened ?y)\n    )\n)\n```\n\nEffects:\n```\n(and\n    (not (object-on ?x ?y))\n    (robot-holding ?x)\n    (not (robot-hand-empty))\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "annotation": [
+            "There is an inaccurate precondition: \"?x is not stacked on top of other object\" should only apply when ?x is a stackable object",
+            "There is a missing precondition: ?x is not stacked under any other household object if ?x is a stackable object"
+        ]
+    },
+    "Put an Object on or in a Furniture Piece or an Appliance": {
+        "action_desc": "This action enables the robot to put an object object_1 in/on a large piece of furniture (e.g., dining tables, drawers, cabinets) or an appliance (e.g., dishwashers and refrigerators). For example, the robot puts coffee_mug_1 on dining_table_1, the robot puts fork_1 in drawer_1, or the robot puts apple_1 in refrigerator_1. The furniture piece or appliance should be opened if it is openable.",
+        "llm_output": "1. ?x - householdObject: the object to put in/on the furniture or appliance\n2. ?y - furnitureAppliance: the furniture or appliance to put the object in/on\n\nPreconditions:\n```\n(and\n    (robot-at ?y)\n    (robot-holding ?x)\n    (pickupable ?x)\n    (object-clear ?x)\n    (or\n        (not (openable ?y))\n        (opened ?y)\n    )\n)\n```\n\nEffects:\n```\n(and\n    (not (robot-holding ?x))\n    (robot-hand-empty)\n    (object-on ?x ?y)\n    (if (openable ?y) (closed ?y))\n)\n```\n\nNew Predicates:\n1. (closed ?y - furnitureAppliance): true if the furniture or appliance ?y is closed",
+        "annotation": [
+            "There is an unnecessary precondition \"no other object stacked on object ?x\"",
+            "Syntax error, there is an illegal keyword \"if\""
+        ]
+    },
+    "Stack Objects": {
+        "action_desc": "This action enables the robot to stack one object object_1 on top of another object object_2 that is on the same piece of furniture. For example, the robot stacks book_1 on top of book_2, or the robot stacks lunch_box_1 on top of lunch_box_2. The furniture piece has to have an open and flat surface. Note that object_1 and object_2 both must be stackable objects. You may assume the robot is holding object_1 at the beginning. Also, there should be no other object on top of object_2.",
+        "llm_output": "1. ?x - householdObject: the object to stack on top of another object\n2. ?y - householdObject: the object on which ?x will be stacked\n3. ?z - furnitureAppliance: the furniture or appliance on which both objects are placed\n\nPreconditions:\n```\n(and\n    (robot-holding ?x)\n    (object-on ?y ?z)\n    (object-clear ?y)\n    (flat-surface ?z)\n    (pickupable ?x)\n    (pickupable ?y)\n    (robot-at ?z)\n)\n```\n\nEffects:\n```\n(and\n    (not (robot-holding ?x))\n    (not (object-clear ?y))\n    (robot-hand-empty)\n    (object-on ?x ?z)\n    (object-stacked ?x)\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "annotation": [
+            "In the precondition, ?x and ?y should be stackable rather than pickupable",
+            "There is a missing effect: object ?x should be stacked on top of object ?y"
+        ]
+    },
+    "Unstack Objects": {
+        "action_desc": "This action enables the robot to unstack one object object_1 that is on top of another object object_2. For example, the robot stacks book_1 on top of book_2, or the robot stacks lunch_box_1 on top of lunch_box_2. The robot will hold the object after unstacking it.",
+        "llm_output": "1. ?x - householdObject: the object to unstack from another object\n2. ?y - householdObject: the object that ?x is stacked on\n3. ?z - furnitureAppliance: the furniture or appliance where the objects are stacked\n\nPreconditions:\n```\n(and\n    (robot-at ?z)\n    (object-on ?x ?z)\n    (object-on ?y ?z)\n    (pickupable ?x)\n    (object-stacked ?x)\n    (object-clear ?x)\n    (robot-hand-empty)\n)\n```\n\nEffects:\n```\n(and\n    (not (object-on ?x ?z))\n    (not (object-stacked ?x))\n    (not (object-clear ?x))\n    (not (robot-hand-empty))\n    (robot-holding ?x)\n    (object-clear ?y)\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "annotation": [
+            "There is an incorrect effect, this action shouldn't change whether or not object ?x is under any another household object",
+            "There is a missing effect: object ?x is no longer stacked on top of object ?y"
+        ]
+    },
+    "Open a Furniture Piece or an Appliance": {
+        "action_desc": "This action enables the robot to open a large piece of furniture (e.g., cabinets and drawers) or an appliance (e.g., dishwashers and refrigerators) that is openable. For example, the robot opens cabinet_1, or the robot opens drawer_2.",
+        "llm_output": "1. ?y - furnitureAppliance: the furniture or appliance to be opened\n\nPreconditions:\n```\n(and\n    (robot-at ?y)\n    (openable ?y)\n    (closed ?y)\n    (robot-hand-empty)\n)\n```\n\nEffects:\n```\n(and\n    (not (closed ?y))\n    (opened ?y)\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "annotation": []
+    },
+    "Close a Furniture Piece or an Appliance": {
+        "action_desc": "This action enables the robot to close a large piece of furniture (e.g., cabinets and drawers) or an appliance (e.g., dishwashers and refrigerators) that is openable. For example, the robot closes cabinet_1, or the robot closes drawer_2.",
+        "llm_output": "1. ?y - furnitureAppliance: the furniture or appliance to close\n\nPreconditions:\n```\n(and\n    (robot-at ?y)\n    (openable ?y)\n    (opened ?y)\n    (robot-hand-empty)\n)\n```\n\nEffects:\n```\n(and\n    (not (opened ?y))\n    (closed ?y)\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "annotation": []
+    },
+    "Toggle a Small Appliance On": {
+        "action_desc": "This action enables the robot to toggle a small appliances (like humidifiers and light bulbs) to switch them on. For example, the robot toggles humidifier_2 on, or the robot toggle light_bulb_1 on.",
+        "llm_output": "1. ?x - householdObject: the small appliance to toggle on\n2. ?y - furnitureAppliance: the furniture or appliance where the small appliance is located\n\nPreconditions:\n```\n(and\n    (robot-at ?y)\n    (object-on ?x ?y)\n    (robot-hand-empty)\n    (not (appliance-on ?x))\n)\n```\n\nEffects:\n```\n(and\n    (appliance-on ?x)\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "annotation": [
+            "There is a missing precondition: you need to make sure the appliance to toggle is a toggleable appliance"
+        ]
+    },
+    "Toggle a Small Appliance Off": {
+        "action_desc": "This action enables the robot to toggle a small appliances (like humidifiers and light bulbs) to switch them off. For example, the robot toggles humidifier_2 off, or the robot toggle light_bulb_1 off.",
+        "llm_output": "1. ?x - householdObject: the small appliance to toggle off\n2. ?y - furnitureAppliance: the furniture or appliance where the small appliance is located\n\nPreconditions:\n```\n(and\n    (robot-at ?y)\n    (object-on ?x ?y)\n    (appliance-on ?x)\n    (robot-hand-empty)\n)\n```\n\nEffects:\n```\n(and\n    (not (appliance-on ?x))\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "annotation": [
+            "There is a missing precondition: you need to make sure the appliance to toggle is a toggleable appliance"
+        ]
+    },
+    "Slice Objects": {
+        "action_desc": "This action enables the robot to slice objects (like fruits and vegetables) with a knife. For example, the robot slices orange_1 with knife_2, the robot slices potato_3 with knife_1. Note that the object to slice needs to be placed on a cutting board. A cutting board can be viewed as a special kind of receptacle. You may assume the robot is holding the knife in its gripper at the beginning. The object to slice should be sliceable. The furniture piece needs to have an open and flat surface to allow enough space for manipulation (e.g., countertops or tables).",
+        "llm_output": "1. ?x - householdObject: the object to slice\n2. ?k - householdObject: the knife to use for slicing\n3. ?y - furnitureAppliance: the furniture or appliance with a flat surface for manipulation\n4. ?z - householdObject: the cutting board on which the object is placed\n\nPreconditions:\n```\n(and\n    (robot-at ?y)\n    (object-on ?x ?y)\n    (object-on ?z ?y)\n    (robot-holding ?k)\n    (sliceable ?x)\n    (cutting-board ?z)\n    (knife ?k)\n    (flat-surface ?y)\n    (object-whole ?x)\n)\n```\n\nEffects:\n```\n(and\n    (not (object-whole ?x))\n    (object-sliced ?x)\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "annotation": [
+            "There is an incorrect object type: a cutting board should be viewed as a small receptacle as mentioned in the prompt",
+            "There is an incorrect precondition: ?x should be on the cutting board not directly on the furniture ?y"
+        ]
+    },
+    "Heat Food with a Microwave": {
+        "action_desc": "This action enables the robot to start a microwave and heat up the food inside. For example, the robot heats pizza_1 with microwave_2, the robot heats pasta_2 with microwave_1. The food to heat should be placed in a small receptacle (e.g., a plate or a bowl). The robot also needs to close the door of the microwave before taking this action. Note that the food is no longer pickupable after it has been heated.",
+        "llm_output": "1. ?x - householdObject: the food to heat up\n2. ?y - furnitureAppliance: the microwave to use\n3. ?z - smallReceptacle: the small receptacle containing the food\n\nPreconditions:\n```\n(and\n    (robot-at ?y)\n    (object-on ?x ?y)\n    (object-in ?x ?z)\n    (is-small-receptacle ?z)\n    (object-on ?z ?y)\n    (pickupable ?x)\n    (closed ?y)\n    (not (food-heated ?x))\n)\n```\n\nEffects:\n```\n(and\n    (not (pickupable ?x))\n    (food-heated ?x)\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "annotation": [
+            "There is an incorrect precondition: the object should be in the receptacle ?z not directly in the microwave ?y",
+            "There is an incorrect precondition: ?x needs not be pickupable",
+            "There is a missing precondition: ?y should be a microwave"
+        ]
+    },
+    "Heat Food with Pan": {
+        "action_desc": "This action enables the robot to heat food which is heatable with a pan. For example, the robot heats pizza_1 with pan_2, the robot heats pasta_2 with pan_1. Note that the food should be placed on the pan, and the pan needs to be placed on a stove burner before executing this action. A stove burner can be viewed as an immovable appliance, and a pan can be viewed as a small receptacle. Note that the food is no longer pickupable after it has been heated.",
+        "llm_output": "1. ?f - householdObject: the food to be heated\n2. ?p - householdObject: the pan to be used for heating the food\n3. ?s - furnitureAppliance: the stove burner on which the pan is placed\n\nPreconditions:\n```\n(and\n    (robot-at ?s)\n    (object-on ?f ?p)\n    (object-on ?p ?s)\n    (pickupable ?f)\n    (is-small-receptacle ?p)\n    (flat-surface ?s)\n    (robot-hand-empty)\n)\n```\n\nEffects:\n```\n(and\n    (not (pickupable ?f))\n    (food-heated-pan ?f)\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "annotation": [
+            "Inaccurate object type, a pan ?p can be viewed as a small receptacle",
+            "There is a syntax error: the second parameter of `object-on` should be a furnitureAppliance, but a householdObject was given. Please use the correct predicate or devise new one(s) if needed",
+            "Incorrect precondition: ?f needs not be pickupable",
+            "There is a missing precondition: ?p has to be a pan",
+            "There is a missing precondition: ?s has to be a stove burner",
+            "There is an incorrect precondition: a stove or burner ?s doesn't need to have a flat surface"
+        ]
+    },
+    "Transfer Food from One Small Receptacle to Another": {
+        "action_desc": "This action enables the robot to transfer food food_1 from one small receptacle receptacle_1 to another small receptacle receptacle_2. This skill is usually used to transfer food that can not be easily picked up by the robot. For example, the robot can pour the milk from milk_box_1 to mug_1, or the robot can transfer heated pizza_1 from pan_2 to plate_1. The furniture piece needs to have an open and flat surface to allow enough space for manipulation (e.g., countertops or tables). Both receptacles should be opened if it is openable. Both receptacles should not be stacked on top of other objects if they are stackable",
+        "llm_output": "1. ?food - householdObject: the food to be transferred\n2. ?receptacle1 - smallReceptacle: the small receptacle from which the food will be transferred\n3. ?receptacle2 - smallReceptacle: the small receptacle to which the food will be transferred\n4. ?furniture - furnitureAppliance: the furniture piece with a flat surface where the transfer will take place\n\nPreconditions:\n```\n(and\n    (robot-at ?furniture)\n    (object-on ?receptacle1 ?furniture)\n    (object-on ?receptacle2 ?furniture)\n    (object-in ?food ?receptacle1)\n    (is-small-receptacle ?receptacle1)\n    (is-small-receptacle ?receptacle2)\n    (flat-surface ?furniture)\n    (robot-hand-empty)\n    (not (object-stacked ?receptacle1))\n    (not (object-stacked ?receptacle2))\n    (or (not (openable-receptacle ?receptacle1)) (opened-receptacle ?receptacle1))\n    (or (not (openable-receptacle ?receptacle2)) (opened-receptacle ?receptacle2))\n)\n```\n\nEffects:\n```\n(and\n    (not (object-in ?food ?receptacle1))\n    (object-in ?food ?receptacle2)\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "annotation": [
+            "There is an inaccurate precondition: \"?receptacle1 is not stacked on other objects\" should only apply if ?receptacle1 is a stackable object",
+            "There is an inaccurate precondition: \"?receptacle2 is not stacked on other objects\" should only apply if ?receptacle2 is a stackable object",
+            "There is a missing precondition: ?receptacle1 is not stacked under any other household object if ?receptacle1 is stackable",
+            "There is a missing precondition: ?receptacle2 is not stacked under any other household object if ?receptacle2 is stackable"
+        ]
+    },
+    "Puts an Object onto or into a Small Receptacle": {
+        "action_desc": "This action enables the robot to put an object object_1 into/onto a small receptacle receptacle_1 (e.g. storage boxes, bowls, plates, or pans). For example, the robot puts apple_1 into blow_1, or the robot puts apple_2 into lunch_box_2. The furniture piece needs to have an open and flat surface to allow enough space for manipulation (e.g., countertops or tables). The receptacle should be opened if it is openable. The receptacle should not be stacked on top of other objects if it is stackable",
+        "llm_output": "1. ?x - householdObject: the object to put into/onto the small receptacle\n2. ?y - furnitureAppliance: the furniture or appliance with a flat surface for manipulation\n3. ?z - smallReceptacle: the small receptacle to put the object into/onto\n\nPreconditions:\n```\n(and\n    (robot-at ?y)\n    (object-on ?x ?y)\n    (pickupable ?x)\n    (not (object-stacked ?z))\n    (flat-surface ?y)\n    (robot-holding ?x)\n    (is-small-receptacle ?z)\n    (object-on ?z ?y)\n    (object-clear ?z)\n    (not (object-in ?x ?z))\n    (or\n        (not (openable-receptacle ?z))\n        (opened-receptacle ?z)\n    )\n)\n```\n\nEffects:\n```\n(and\n    (not (robot-holding ?x))\n    (not (object-on ?x ?y))\n    (robot-hand-empty)\n    (object-in ?x ?z)\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "annotation": [
+            "There is an incorrect precondition: object ?x can't be on the furnitureAppliance ?y when ?x is held by the robot",
+            "There is an inaccurate precondition: \"?z is not stacked on other objects\" should only apply if ?z is a stackable object",
+            "There is an unnecessary precondition: the robot holding the object ?x already implies ?x is not in the receptacle ?z",
+            "There is an inaccurate precondition: \"?z is not under other objects\" should only apply if ?z is a stackable object"
+        ]
+    },
+    "Pick up an Object on or in a Small Receptacle": {
+        "action_desc": "This action enables the robot to pick up an object object_1 in some small receptacle receptacle_1 (e.g. storage boxes, lunch boxes, bowls, plates). For example, the robot picks up apple_1 in blow_1, or the robot picks up apple_2 in lunch_box_2. The furniture piece needs to have an open and flat surface to allow enough space for manipulation (e.g., countertops or tables). The receptacle should be opened if it is openable. The receptacle should not be stacked on top of other objects if it is stackable",
+        "llm_output": "Apologies for the confusion. Since the predicates are already defined, I will remove them from the \"New Predicates\" section.\n\nParameters:\n1. ?x - householdObject: the object to pick up\n2. ?y - furnitureAppliance: the furniture or appliance where the object is located\n3. ?z - smallReceptacle: the small receptacle containing the object\n\nPreconditions:\n```\n(and\n    (robot-at ?y)\n    (object-on ?x ?y)\n    (pickupable ?x)\n    (object-in ?x ?z)\n    (is-small-receptacle ?z)\n    (not (object-stacked ?z))\n    (flat-surface ?y)\n    (robot-hand-empty)\n    (object-clear ?x)\n    (not (openable-receptacle ?z))\n    (or\n        (not (openable ?z))\n        (opened-receptacle ?z)\n    )\n)\n```\n\nEffects:\n```\n(and\n    (not (object-on ?x ?y))\n    (not (object-in ?x ?z))\n    (not (robot-hand-empty))\n    (robot-holding ?x)\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "annotation": [
+            "There is an incorrect precondition: the object ?x is in the receptacle ?z so ?x is not directly on the furniture or appliance ?y",
+            "There is an inaccurate precondition: \"?z is not stacked on other objects\" should only apply if ?z is a stackable object",
+            "There is an incorrect precondition: ?x can't be stacked inside a receptacle so the precondition `?x is not under other household object` is unnecessary",
+            "There is an incorrect precondition: ?z can be an openable receptacle",
+            "There is a syntax error, the first parameter of `openable` should be a furnitureAppliance but here a smallReceptacle is given",
+            "There is a missing precondition: ?z is not stacked under any other household object if ?z is stackable"
+        ]
+    },
+    "Open a Small Receptacle": {
+        "action_desc": "This action enables the robot to open a small receptacle receptacle_1 (e.g. small storage boxes or lunch boxes with lids). For example, the robot opens lunch_box_2, or the robot opens storage_box_1. This action is only applicable for receptacles that are openable. The receptacle needs to be placed on a furniture piece that has an open and flat surface to allow enough space for manipulation (e.g., countertops or tables). The receptacle should not be stacked on top of other objects if it is stackable",
+        "llm_output": "1. ?x - smallReceptacle: the small receptacle to be opened\n2. ?y - furnitureAppliance: the furniture or appliance on which the small receptacle is placed\n\nPreconditions:\n```\n(and\n    (robot-at ?y)\n    (object-on ?x ?y)\n    (openable-receptacle ?x)\n    (flat-surface ?y)\n    (robot-hand-empty)\n    (not (object-stacked ?x))\n    (closed-receptacle ?x)\n)\n```\n\nEffects:\n```\n(and\n    (not (closed-receptacle ?x))\n    (opened-receptacle ?x)\n)\n```\n\nNew Predicates:\n1. (closed-receptacle ?x - smallReceptacle): true if the small receptacle ?x is closed",
+        "annotation": [
+            "There is an inaccurate precondition: \"?x is not stacked on other objects\" should only apply if ?x is a stackable object",
+            "There is a missing precondition: ?x is not stacked under any other object if ?x is stackable"
+        ]
+    },
+    "Close a Small Receptacle": {
+        "action_desc": "This action enables the robot to close a small receptacle receptacle_1 that is openable (e.g. small storage boxes or lunch boxes with lids). For example, the robot closes lunch_box_2, or the robot closes storage_box_1. This action is only applicable for receptacles that are openable. The receptacle needs to be placed on a furniture piece that has an open and flat surface to allow enough space for manipulation (e.g., countertops or tables). The receptacle should not be stacked on top of other objects if it is stackable",
+        "llm_output": "1. ?x - smallReceptacle: the small receptacle to close\n2. ?y - furnitureAppliance: the furniture or appliance on which the small receptacle is placed\n\nPreconditions:\n```\n(and\n    (robot-at ?y)\n    (object-on ?x ?y)\n    (openable-receptacle ?x)\n    (opened-receptacle ?x)\n    (flat-surface ?y)\n    (robot-hand-empty)\n    (not (object-stacked ?x))\n)\n```\n\nEffects:\n```\n(and\n    (not (opened-receptacle ?x))\n    (closed-receptacle ?x)\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "annotation": [
+            "There is an inaccurate precondition: \"?x is not stacked on other objects\" should only apply if ?x is a stackable object",
+            "There is a missing precondition: ?x is not stacked under any other objects if ?x is stackable"
+        ]
+    },
+    "Mash Food with a Blender": {
+        "action_desc": "This action enables the robot to use a blender to mash some food in it. For example, the robot gets mashed apple_2 with blender_1, or the robot gets mashed banana_1 with blender_2. A blender can be viewed as a small receptacle. The food needs to be sliced beforehand and the food should be placed inside the blender. Note that the food remains in the blender after this action is performed. You may also assume the blender is turned off after mashing the food.",
+        "llm_output": "1. ?b - householdObject: the blender to be used for mashing the food\n2. ?f - householdObject: the food to be mashed\n3. ?y - furnitureAppliance: the furniture or appliance where the blender is located\n\nPreconditions:\n```\n(and\n    (robot-at ?y)\n    (object-on ?b ?y)\n    (object-on ?f ?y)\n    (object-in ?f ?b)\n    (object-sliced ?f)\n    (is-small-receptacle ?b)\n    (appliance-on ?b)\n    (robot-hand-empty)\n)\n```\n\nEffects:\n```\n(and\n    (not (appliance-on ?b))\n    (object-mashed ?f)\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "annotation": [
+            "",
+            "There is an incorrect precondition: the food to mash should be in the blender ?b rather than directly on the furniture piece ?y",
+            "There is an incorrect precondition: as mentioned in the prompt, the blender should be turned off both at the beginning and at the end",
+            "There is a missing precondition: ?b should be a blender",
+            "There is an incorrect object type: a blender ?b should be a smallReceptacle",
+            "There is a missing effect: ?f is no longer pickupable after being mashed"
+        ]
+    },
+    "Wash an Object": {
+        "action_desc": "This action enables the robot to wash an object (e.g., fruits and cloths) in a sink or basin. For example, the robot washed apple_1, or the robot washed romaine_lettuce_1. The object has to be something washable. The robot should hold the object when washing it.",
+        "llm_output": "1. ?x - householdObject: the object to be washed\n2. ?y - furnitureAppliance: the sink or basin where the object will be washed\n\nPreconditions:\n```\n(and\n    (robot-at ?y)\n    (washable ?x)\n    (robot-holding ?x)\n)\n```\n\nEffects:\n```\n(and\n    (not (object-dirty ?x))\n    (object-washed ?x)\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "annotation": [
+            "There is a missing precondition: ?y should be a sink or basin"
+        ]
+    },
+    "Wipe a Surface": {
+        "action_desc": "This action enables the robot to wipe and clean the surface of a piece of furniture or an appliance, such as a dining table, a mirror, a sink, or a bathtub, with a cloth. For example, the robot wipes dining_table_1 with cloth_1, the robot wipes mirror_1 with cloth_2. You may assume the robot is holding the cloth before executing this action. The cloth will be dirty after executing the action. The robot should also use a clean cloth.",
+        "llm_output": "1. ?x - furnitureAppliance: the furniture or appliance to be wiped and cleaned\n2. ?c - householdObject: the cloth to be used for wiping and cleaning\n\nPreconditions:\n```\n(and\n    (robot-at ?x)\n    (robot-holding ?c)\n    (washable ?c)\n    (object-washed ?c)\n    (flat-surface ?x)\n)\n```\n\nEffects:\n```\n(and\n    (not (object-washed ?c))\n    (object-dirty ?c)\n    (furniture-cleaned ?x)\n)\n```\n\nNew Predicates:\n1. (furniture-cleaned ?x - furnitureAppliance): true if the furniture or appliance ?x has been wiped and cleaned",
+        "annotation": [
+            "There is a missing precondition: ?c should be a cloth",
+            "There is an incorrect precondition: ?x doesn't need to have a flat surface"
+        ]
+    },
+    "Vacuum a Carpet": {
+        "action_desc": "This action enables the robot to vacuum a carpet with a handheld vacuum cleaner. For example, the robot uses vacuum_cleaner_1 to vacuum carpet_2, the robot uses vacuum_cleaner_2 to vacuum carpet_1. A vacuum can be viewed as a small household item and a carpet can be viewed as an immovable piece of furniture. You need to make sure the dust bin of the vacuum cleaner is not full before executing this action. You may assume the robot is holding the vacuum cleaner at the beginning. The dust bin of the vacuum cleaner will be full of dust if the carpet is not clean.",
+        "llm_output": "1. ?v - householdObject: the handheld vacuum cleaner to use\n2. ?c - furnitureAppliance: the carpet to vacuum\n\nPreconditions:\n```\n(and\n    (robot-holding ?v)\n    (robot-at ?c)\n    (pickupable ?v)\n    (not (dustbin-full ?v))\n    (not (carpet-clean ?c))\n)\n```\n\nEffects:\n```\n(and\n    (carpet-clean ?c)\n    (dustbin-full ?v)\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "annotation": [
+            "There is a missing precondition: ?v should be a handheld vacuum cleaner",
+            "There is a missing precondition: ?c should be a carpet"
+        ]
+    },
+    "Empty a Vacuum Cleaner": {
+        "action_desc": "This action enables the robot to empty a vacuum cleaner\u2019s dust bin by standing next to a trash can and dumping the dust into it. For example, the robot empties vacuum_cleaner_1 and dumps the dust into trash_can_2, or the robot empties vacuum_cleaner_2 and dumps the dust into trash_can 1. A trash can can be viewed as an immovable piece of furniture. Note that the robot should hold the vacuum cleaner and stand by the trash can before executing this action. After executing this action, the robot is still holding the vacuum cleaner. The trash can should be opened if it's openable. The dust bin will be empty after executing this action.",
+        "llm_output": "1. ?v - householdObject: the vacuum cleaner with a full dust bin\n2. ?t - furnitureAppliance: the trash can where the dust will be dumped\n\nPreconditions:\n```\n(and\n    (robot-at ?t)\n    (robot-holding ?v)\n    (dustbin-full ?v)\n    (pickupable ?v)\n    (openable ?t)\n    (opened ?t)\n)\n```\n\nEffects:\n```\n(and\n    (not (dustbin-full ?v))\n)\n```\n\nNew Predicates:\nNo newly defined predicate",
+        "annotation": [
+            "There is an inaccurate precondition: the trash can ?t should be open only if it is openable",
+            "There is a missing precondition: ?t should be a trash can",
+            "There is a missing precondition: ?v should be a vacuum cleaner"
+        ]
+    }
+}
