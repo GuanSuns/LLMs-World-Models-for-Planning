@@ -1,0 +1,53 @@
+{
+    "instance-1.pddl": [
+        "Transport package p0 to location l1-1"
+    ],
+    "instance-2.pddl": [
+        "Transport packages p0 to location l1-1 and package p1 to location l0-0",
+        "Transport packages p0 to location l1-1 and package p1 to location l0-0; please transport package p0 first before transporting p1",
+        "Transport packages p0 to location l1-1 and package p1 to location l0-0; please transport package p1 first before transporting p0"
+    ],
+    "instance-3.pddl" : [
+        "Transport package p0 to location l1-0"
+    ],
+    "instance-4.pddl" : [
+        "Transport packages p0 to location l1-1 and p1 to location l0-1; please transport package p0 first before transporting p1",
+        "Transport packages p0 to location l1-1 and p1 to location l0-1; please transport package p1 first before transporting p0"
+    ],
+    "instance-5.pddl" : [
+        "Transport package p0 to location l0-1, package p1 to location l1-1 and package p2 to location l1-0",
+        "Transport package p0 to location l0-1, package p1 to location l1-1 and package p2 to location l1-0; please transport package p1 first before transporting p2",
+        "Transport package p0 to location l0-1, package p1 to location l1-1 and package p2 to location l1-0; please transport package p2 first before transporting p1"
+    ],
+    "instance-6.pddl" : [
+        "Transport package p0 to location l0-0, package p1 and package p3 to location l1-1 and package p2 to location l0-1",
+        "Transport package p0 to location l0-0, package p1 and package p3 to location l1-1 and package p2 to location l0-1; please transport package p0 first, then p1, then p2, and p3 in the end",
+        "Transport package p0 to location l0-0, package p1 and package p3 to location l1-1 and package p2 to location l0-1; please transport package p1 first, then p2, then p0, and p3 in the end",
+        "Transport package p0 to location l0-0, package p1 and package p3 to location l1-1 and package p2 to location l0-1; please transport package p3 first, then p1, then p2, and p0 in the end"
+    ],
+    "instance-7.pddl" : [
+        "Transport package p0 to location l1-2"
+    ],
+    "instance-8.pddl" : [
+        "Transport package p0 to location l0-2 and package p1 to location l0-0"
+    ],
+    "instance-9.pddl" : [
+        "Transport package p0 to location l0-0, package p1 to location l1-1 and package p2 to location l1-2"
+    ],
+    "instance-10.pddl" : [
+        "Transport package p0 to location l1-1, package p1 to location l1-0, package p2 to location l0-0 and package p3 to location l0-2"
+    ],
+    "instance-11.pddl": [
+        "Transport package p0 to location l0-2, package p1 to location l1-1, package p2 to location l1-0, package p3 to location l1-1 and package p4 to location l0-1."
+    ],
+    "instance-12.pddl": [
+        "Transport package p0 to location l1-1, package p1 to location l0-0, package p2 to location l1-0, package p3 to location l1-0 and package p4 to location l0-2."
+    ],
+    "instance-13.pddl": [
+        "Transport package p0 to location l0-2, package p1 to location l1-1, package p2 to location l1-0, package p3 to location l1-2, package p4 to location l0-1."
+    ],
+    "instance-14.pddl": [
+        "Transport package p0 to location l0-2, package p1 to location l1-1, package p2 to location l1-0, package p3 to location l0-2, package p4 to location l0-1."
+    ]
+
+}

@@ -1,0 +1,2579 @@
+{
+    "Transport package package_0 to location location_2": {
+        "case_0": {
+            "scene_0": {
+                "objects": {
+                    "plane_0": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_0 is at location location_1"
+                        ]
+                    },
+                    "city_0": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "city_1": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "truck_0": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_0 is at location location_2"
+                        ]
+                    },
+                    "truck_1": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_1 is at location location_0"
+                        ]
+                    },
+                    "location_0": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_0 is in city city_1",
+                            "location_0 is an airport"
+                        ]
+                    },
+                    "location_1": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_1 is in city city_0",
+                            "location_1 is an airport"
+                        ]
+                    },
+                    "location_2": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_2 is in city city_0"
+                        ]
+                    },
+                    "package_0": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_0 is at location location_0"
+                        ]
+                    }
+                },
+                "watermark": "05/15/2023, 22:17:53"
+            }
+        }
+    },
+    "Transport package package_3 to location location_3, package package_4 to location location_0, package package_1 to location location_2, package package_0 to location location_0 and package package_2 to location location_4.": {
+        "case_0": {
+            "scene_0": {
+                "objects": {
+                    "plane_0": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_0 is at location location_5"
+                        ]
+                    },
+                    "city_0": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "city_1": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "truck_0": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_0 is at location location_2"
+                        ]
+                    },
+                    "truck_1": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_1 is at location location_4"
+                        ]
+                    },
+                    "location_0": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_0 is in city city_0"
+                        ]
+                    },
+                    "location_1": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_1 is in city city_0"
+                        ]
+                    },
+                    "location_2": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_2 is in city city_0",
+                            "location_2 is an airport"
+                        ]
+                    },
+                    "location_3": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_3 is in city city_1"
+                        ]
+                    },
+                    "location_4": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_4 is in city city_1"
+                        ]
+                    },
+                    "location_5": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_5 is in city city_1",
+                            "location_5 is an airport"
+                        ]
+                    },
+                    "package_0": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_0 is at location location_5"
+                        ]
+                    },
+                    "package_1": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_1 is at location location_4"
+                        ]
+                    },
+                    "package_2": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_2 is at location location_1"
+                        ]
+                    },
+                    "package_3": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_3 is at location location_2"
+                        ]
+                    },
+                    "package_4": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_4 is at location location_5"
+                        ]
+                    }
+                },
+                "watermark": "05/15/2023, 22:17:53"
+            }
+        }
+    },
+    "Transport package package_1 to location location_0, package package_3 to location location_2, package package_0 to location location_5 and package package_2 to location location_3": {
+        "case_0": {
+            "scene_0": {
+                "objects": {
+                    "plane_0": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_0 is at location location_2"
+                        ]
+                    },
+                    "city_0": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "city_1": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "truck_0": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_0 is at location location_0"
+                        ]
+                    },
+                    "truck_1": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_1 is at location location_4"
+                        ]
+                    },
+                    "location_0": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_0 is in city city_0"
+                        ]
+                    },
+                    "location_1": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_1 is in city city_0"
+                        ]
+                    },
+                    "location_2": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_2 is in city city_0",
+                            "location_2 is an airport"
+                        ]
+                    },
+                    "location_3": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_3 is in city city_1"
+                        ]
+                    },
+                    "location_4": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_4 is in city city_1"
+                        ]
+                    },
+                    "location_5": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_5 is in city city_1",
+                            "location_5 is an airport"
+                        ]
+                    },
+                    "package_0": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_0 is at location location_3"
+                        ]
+                    },
+                    "package_1": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_1 is at location location_1"
+                        ]
+                    },
+                    "package_2": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_2 is at location location_0"
+                        ]
+                    },
+                    "package_3": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_3 is at location location_5"
+                        ]
+                    }
+                },
+                "watermark": "05/15/2023, 22:17:53"
+            }
+        }
+    },
+    "Transport package package_0 to location location_3 and package package_1 to location location_5": {
+        "case_0": {
+            "scene_0": {
+                "objects": {
+                    "plane_0": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_0 is at location location_5"
+                        ]
+                    },
+                    "city_0": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "city_1": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "truck_0": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_0 is at location location_2"
+                        ]
+                    },
+                    "truck_1": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_1 is at location location_4"
+                        ]
+                    },
+                    "location_0": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_0 is in city city_0"
+                        ]
+                    },
+                    "location_1": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_1 is in city city_0"
+                        ]
+                    },
+                    "location_2": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_2 is in city city_0",
+                            "location_2 is an airport"
+                        ]
+                    },
+                    "location_3": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_3 is in city city_1"
+                        ]
+                    },
+                    "location_4": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_4 is in city city_1"
+                        ]
+                    },
+                    "location_5": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_5 is in city city_1",
+                            "location_5 is an airport"
+                        ]
+                    },
+                    "package_0": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_0 is at location location_0"
+                        ]
+                    },
+                    "package_1": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_1 is at location location_1"
+                        ]
+                    }
+                },
+                "watermark": "05/15/2023, 22:17:53"
+            }
+        }
+    },
+    "Transport packages package_0 to location location_2 and package package_1 to location location_0": {
+        "case_0": {
+            "scene_0": {
+                "objects": {
+                    "plane_0": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_0 is at location location_1"
+                        ]
+                    },
+                    "city_0": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "city_1": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "truck_0": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_0 is at location location_1"
+                        ]
+                    },
+                    "truck_1": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_1 is at location location_0"
+                        ]
+                    },
+                    "location_0": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_0 is in city city_1",
+                            "location_0 is an airport"
+                        ]
+                    },
+                    "location_1": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_1 is in city city_0",
+                            "location_1 is an airport"
+                        ]
+                    },
+                    "location_2": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_2 is in city city_0"
+                        ]
+                    },
+                    "package_0": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_0 is at location location_0"
+                        ]
+                    },
+                    "package_1": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_1 is at location location_2"
+                        ]
+                    }
+                },
+                "watermark": "05/15/2023, 22:17:53"
+            }
+        }
+    },
+    "Transport packages package_0 to location location_2 and package package_1 to location location_0; please transport package package_0 first before transporting package_1": {
+        "case_0": {
+            "scene_0": {
+                "objects": {
+                    "plane_0": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_0 is at location location_1"
+                        ]
+                    },
+                    "city_0": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "city_1": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "truck_0": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_0 is at location location_1"
+                        ]
+                    },
+                    "truck_1": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_1 is at location location_0"
+                        ]
+                    },
+                    "location_0": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_0 is in city city_1",
+                            "location_0 is an airport"
+                        ]
+                    },
+                    "location_1": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_1 is in city city_0",
+                            "location_1 is an airport"
+                        ]
+                    },
+                    "location_2": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_2 is in city city_0"
+                        ]
+                    },
+                    "package_0": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_0 is at location location_0"
+                        ]
+                    },
+                    "package_1": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_1 is at location location_2"
+                        ]
+                    }
+                },
+                "watermark": "05/15/2023, 22:17:53"
+            }
+        }
+    },
+    "Transport packages package_0 to location location_2 and package package_1 to location location_0; please transport package package_1 first before transporting package_0": {
+        "case_0": {
+            "scene_0": {
+                "objects": {
+                    "plane_0": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_0 is at location location_1"
+                        ]
+                    },
+                    "city_0": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "city_1": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "truck_0": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_0 is at location location_1"
+                        ]
+                    },
+                    "truck_1": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_1 is at location location_0"
+                        ]
+                    },
+                    "location_0": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_0 is in city city_1",
+                            "location_0 is an airport"
+                        ]
+                    },
+                    "location_1": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_1 is in city city_0",
+                            "location_1 is an airport"
+                        ]
+                    },
+                    "location_2": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_2 is in city city_0"
+                        ]
+                    },
+                    "package_0": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_0 is at location location_0"
+                        ]
+                    },
+                    "package_1": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_1 is at location location_2"
+                        ]
+                    }
+                },
+                "watermark": "05/15/2023, 22:17:53"
+            }
+        }
+    },
+    "Transport package package_3 to location location_3, package package_4 to location location_0, package package_1 to location location_2, package package_0 to location location_3, package package_2 to location location_4.": {
+        "case_0": {
+            "scene_0": {
+                "objects": {
+                    "plane_0": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_0 is at location location_2"
+                        ]
+                    },
+                    "plane_1": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_1 is at location location_5"
+                        ]
+                    },
+                    "city_0": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "city_1": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "truck_0": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_0 is at location location_2"
+                        ]
+                    },
+                    "truck_1": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_1 is at location location_5"
+                        ]
+                    },
+                    "location_0": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_0 is in city city_0"
+                        ]
+                    },
+                    "location_1": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_1 is in city city_0"
+                        ]
+                    },
+                    "location_2": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_2 is in city city_0",
+                            "location_2 is an airport"
+                        ]
+                    },
+                    "location_3": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_3 is in city city_1"
+                        ]
+                    },
+                    "location_4": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_4 is in city city_1"
+                        ]
+                    },
+                    "location_5": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_5 is in city city_1",
+                            "location_5 is an airport"
+                        ]
+                    },
+                    "package_0": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_0 is at location location_1"
+                        ]
+                    },
+                    "package_1": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_1 is at location location_0"
+                        ]
+                    },
+                    "package_2": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_2 is at location location_1"
+                        ]
+                    },
+                    "package_3": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_3 is at location location_0"
+                        ]
+                    },
+                    "package_4": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_4 is at location location_4"
+                        ]
+                    }
+                },
+                "watermark": "05/15/2023, 22:17:53"
+            }
+        }
+    },
+    "Transport package package_1 to location location_5, package package_2 to location location_0 and package package_0 to location location_1": {
+        "case_0": {
+            "scene_0": {
+                "objects": {
+                    "plane_0": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_0 is at location location_2"
+                        ]
+                    },
+                    "city_0": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "city_1": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "truck_0": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_0 is at location location_0"
+                        ]
+                    },
+                    "truck_1": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_1 is at location location_4"
+                        ]
+                    },
+                    "location_0": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_0 is in city city_0"
+                        ]
+                    },
+                    "location_1": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_1 is in city city_0"
+                        ]
+                    },
+                    "location_2": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_2 is in city city_0",
+                            "location_2 is an airport"
+                        ]
+                    },
+                    "location_3": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_3 is in city city_1"
+                        ]
+                    },
+                    "location_4": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_4 is in city city_1"
+                        ]
+                    },
+                    "location_5": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_5 is in city city_1",
+                            "location_5 is an airport"
+                        ]
+                    },
+                    "package_0": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_0 is at location location_3"
+                        ]
+                    },
+                    "package_1": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_1 is at location location_1"
+                        ]
+                    },
+                    "package_2": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_2 is at location location_3"
+                        ]
+                    }
+                },
+                "watermark": "05/15/2023, 22:17:53"
+            }
+        }
+    },
+    "Transport package package_1 to location location_0, package package_3 and package package_2 to location location_2 and package package_0 to location location_3": {
+        "case_0": {
+            "scene_0": {
+                "objects": {
+                    "plane_0": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_0 is at location location_0"
+                        ]
+                    },
+                    "city_0": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "city_1": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "truck_0": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_0 is at location location_2"
+                        ]
+                    },
+                    "truck_1": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_1 is at location location_3"
+                        ]
+                    },
+                    "location_0": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_0 is in city city_1",
+                            "location_0 is an airport"
+                        ]
+                    },
+                    "location_1": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_1 is in city city_0",
+                            "location_1 is an airport"
+                        ]
+                    },
+                    "location_2": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_2 is in city city_0"
+                        ]
+                    },
+                    "location_3": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_3 is in city city_1"
+                        ]
+                    },
+                    "package_0": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_0 is at location location_2"
+                        ]
+                    },
+                    "package_1": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_1 is at location location_2"
+                        ]
+                    },
+                    "package_2": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_2 is at location location_0"
+                        ]
+                    },
+                    "package_3": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_3 is at location location_1"
+                        ]
+                    }
+                },
+                "watermark": "05/15/2023, 22:17:53"
+            }
+        }
+    },
+    "Transport package package_1 to location location_0, package package_3 and package package_2 to location location_2 and package package_0 to location location_3; please transport package package_1 first, then package_3, then package_0, and package_2 in the end": {
+        "case_0": {
+            "scene_0": {
+                "objects": {
+                    "plane_0": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_0 is at location location_0"
+                        ]
+                    },
+                    "city_0": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "city_1": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "truck_0": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_0 is at location location_2"
+                        ]
+                    },
+                    "truck_1": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_1 is at location location_3"
+                        ]
+                    },
+                    "location_0": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_0 is in city city_1",
+                            "location_0 is an airport"
+                        ]
+                    },
+                    "location_1": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_1 is in city city_0",
+                            "location_1 is an airport"
+                        ]
+                    },
+                    "location_2": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_2 is in city city_0"
+                        ]
+                    },
+                    "location_3": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_3 is in city city_1"
+                        ]
+                    },
+                    "package_0": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_0 is at location location_2"
+                        ]
+                    },
+                    "package_1": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_1 is at location location_2"
+                        ]
+                    },
+                    "package_2": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_2 is at location location_0"
+                        ]
+                    },
+                    "package_3": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_3 is at location location_1"
+                        ]
+                    }
+                },
+                "watermark": "05/15/2023, 22:17:53"
+            }
+        }
+    },
+    "Transport package package_1 to location location_0, package package_3 and package package_2 to location location_2 and package package_0 to location location_3; please transport package package_3 first, then package_0, then package_1, and package_2 in the end": {
+        "case_0": {
+            "scene_0": {
+                "objects": {
+                    "plane_0": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_0 is at location location_0"
+                        ]
+                    },
+                    "city_0": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "city_1": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "truck_0": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_0 is at location location_2"
+                        ]
+                    },
+                    "truck_1": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_1 is at location location_3"
+                        ]
+                    },
+                    "location_0": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_0 is in city city_1",
+                            "location_0 is an airport"
+                        ]
+                    },
+                    "location_1": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_1 is in city city_0",
+                            "location_1 is an airport"
+                        ]
+                    },
+                    "location_2": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_2 is in city city_0"
+                        ]
+                    },
+                    "location_3": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_3 is in city city_1"
+                        ]
+                    },
+                    "package_0": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_0 is at location location_2"
+                        ]
+                    },
+                    "package_1": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_1 is at location location_2"
+                        ]
+                    },
+                    "package_2": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_2 is at location location_0"
+                        ]
+                    },
+                    "package_3": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_3 is at location location_1"
+                        ]
+                    }
+                },
+                "watermark": "05/15/2023, 22:17:53"
+            }
+        }
+    },
+    "Transport package package_1 to location location_0, package package_3 and package package_2 to location location_2 and package package_0 to location location_3; please transport package package_2 first, then package_3, then package_0, and package_1 in the end": {
+        "case_0": {
+            "scene_0": {
+                "objects": {
+                    "plane_0": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_0 is at location location_0"
+                        ]
+                    },
+                    "city_0": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "city_1": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "truck_0": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_0 is at location location_2"
+                        ]
+                    },
+                    "truck_1": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_1 is at location location_3"
+                        ]
+                    },
+                    "location_0": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_0 is in city city_1",
+                            "location_0 is an airport"
+                        ]
+                    },
+                    "location_1": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_1 is in city city_0",
+                            "location_1 is an airport"
+                        ]
+                    },
+                    "location_2": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_2 is in city city_0"
+                        ]
+                    },
+                    "location_3": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_3 is in city city_1"
+                        ]
+                    },
+                    "package_0": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_0 is at location location_2"
+                        ]
+                    },
+                    "package_1": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_1 is at location location_2"
+                        ]
+                    },
+                    "package_2": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_2 is at location location_0"
+                        ]
+                    },
+                    "package_3": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_3 is at location location_1"
+                        ]
+                    }
+                },
+                "watermark": "05/15/2023, 22:17:53"
+            }
+        }
+    },
+    "Transport package package_0 to location location_1": {
+        "case_0": {
+            "scene_0": {
+                "objects": {
+                    "plane_0": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_0 is at location location_2"
+                        ]
+                    },
+                    "city_0": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "city_1": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "truck_0": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_0 is at location location_2"
+                        ]
+                    },
+                    "truck_1": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_1 is at location location_3"
+                        ]
+                    },
+                    "location_0": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_0 is in city city_0"
+                        ]
+                    },
+                    "location_1": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_1 is in city city_0"
+                        ]
+                    },
+                    "location_2": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_2 is in city city_0",
+                            "location_2 is an airport"
+                        ]
+                    },
+                    "location_3": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_3 is in city city_1"
+                        ]
+                    },
+                    "location_4": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_4 is in city city_1"
+                        ]
+                    },
+                    "location_5": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_5 is in city city_1",
+                            "location_5 is an airport"
+                        ]
+                    },
+                    "package_0": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_0 is at location location_4"
+                        ]
+                    }
+                },
+                "watermark": "05/15/2023, 22:17:53"
+            }
+        }
+    },
+    "Transport package package_3 to location location_3, package package_4 to location location_0, package package_1 to location location_2, package package_0 to location location_1, package package_2 to location location_4.": {
+        "case_0": {
+            "scene_0": {
+                "objects": {
+                    "plane_0": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_0 is at location location_2"
+                        ]
+                    },
+                    "plane_1": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_1 is at location location_5"
+                        ]
+                    },
+                    "city_0": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "city_1": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "truck_0": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_0 is at location location_2"
+                        ]
+                    },
+                    "truck_1": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_1 is at location location_5"
+                        ]
+                    },
+                    "location_0": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_0 is in city city_0"
+                        ]
+                    },
+                    "location_1": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_1 is in city city_0"
+                        ]
+                    },
+                    "location_2": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_2 is in city city_0",
+                            "location_2 is an airport"
+                        ]
+                    },
+                    "location_3": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_3 is in city city_1"
+                        ]
+                    },
+                    "location_4": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_4 is in city city_1"
+                        ]
+                    },
+                    "location_5": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_5 is in city city_1",
+                            "location_5 is an airport"
+                        ]
+                    },
+                    "package_0": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_0 is at location location_2"
+                        ]
+                    },
+                    "package_1": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_1 is at location location_0"
+                        ]
+                    },
+                    "package_2": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_2 is at location location_2"
+                        ]
+                    },
+                    "package_3": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_3 is at location location_0"
+                        ]
+                    },
+                    "package_4": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_4 is at location location_4"
+                        ]
+                    }
+                },
+                "watermark": "05/15/2023, 22:17:53"
+            }
+        }
+    },
+    "Transport packages package_0 to location location_2 and package_1 to location location_3; please transport package package_0 first before transporting package_1": {
+        "case_0": {
+            "scene_0": {
+                "objects": {
+                    "plane_0": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_0 is at location location_0"
+                        ]
+                    },
+                    "city_0": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "city_1": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "truck_0": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_0 is at location location_2"
+                        ]
+                    },
+                    "truck_1": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_1 is at location location_0"
+                        ]
+                    },
+                    "location_0": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_0 is in city city_1",
+                            "location_0 is an airport"
+                        ]
+                    },
+                    "location_1": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_1 is in city city_0",
+                            "location_1 is an airport"
+                        ]
+                    },
+                    "location_2": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_2 is in city city_0"
+                        ]
+                    },
+                    "location_3": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_3 is in city city_1"
+                        ]
+                    },
+                    "package_0": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_0 is at location location_3"
+                        ]
+                    },
+                    "package_1": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_1 is at location location_2"
+                        ]
+                    }
+                },
+                "watermark": "05/15/2023, 22:17:53"
+            }
+        }
+    },
+    "Transport packages package_0 to location location_2 and package_1 to location location_3; please transport package package_1 first before transporting package_0": {
+        "case_0": {
+            "scene_0": {
+                "objects": {
+                    "plane_0": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_0 is at location location_0"
+                        ]
+                    },
+                    "city_0": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "city_1": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "truck_0": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_0 is at location location_2"
+                        ]
+                    },
+                    "truck_1": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_1 is at location location_0"
+                        ]
+                    },
+                    "location_0": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_0 is in city city_1",
+                            "location_0 is an airport"
+                        ]
+                    },
+                    "location_1": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_1 is in city city_0",
+                            "location_1 is an airport"
+                        ]
+                    },
+                    "location_2": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_2 is in city city_0"
+                        ]
+                    },
+                    "location_3": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_3 is in city city_1"
+                        ]
+                    },
+                    "package_0": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_0 is at location location_3"
+                        ]
+                    },
+                    "package_1": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_1 is at location location_2"
+                        ]
+                    }
+                },
+                "watermark": "05/15/2023, 22:17:53"
+            }
+        }
+    },
+    "Transport package package_3 to location location_0, package package_4 to location location_5, package package_1 to location location_2, package package_0 to location location_2 and package package_2 to location location_3.": {
+        "case_0": {
+            "scene_0": {
+                "objects": {
+                    "plane_0": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_0 is at location location_2"
+                        ]
+                    },
+                    "plane_1": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_1 is at location location_5"
+                        ]
+                    },
+                    "city_0": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "city_1": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "truck_0": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_0 is at location location_2"
+                        ]
+                    },
+                    "truck_1": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_1 is at location location_3"
+                        ]
+                    },
+                    "location_0": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_0 is in city city_0"
+                        ]
+                    },
+                    "location_1": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_1 is in city city_0"
+                        ]
+                    },
+                    "location_2": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_2 is in city city_0",
+                            "location_2 is an airport"
+                        ]
+                    },
+                    "location_3": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_3 is in city city_1"
+                        ]
+                    },
+                    "location_4": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_4 is in city city_1"
+                        ]
+                    },
+                    "location_5": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_5 is in city city_1",
+                            "location_5 is an airport"
+                        ]
+                    },
+                    "package_0": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_0 is at location location_3"
+                        ]
+                    },
+                    "package_1": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_1 is at location location_3"
+                        ]
+                    },
+                    "package_2": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_2 is at location location_1"
+                        ]
+                    },
+                    "package_3": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_3 is at location location_0"
+                        ]
+                    },
+                    "package_4": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_4 is at location location_3"
+                        ]
+                    }
+                },
+                "watermark": "05/15/2023, 22:17:53"
+            }
+        }
+    },
+    "Transport package package_1 to location location_3, package package_2 to location location_2 and package package_0 to location location_1": {
+        "case_0": {
+            "scene_0": {
+                "objects": {
+                    "plane_0": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_0 is at location location_0"
+                        ]
+                    },
+                    "city_0": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "city_1": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "truck_0": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_0 is at location location_1"
+                        ]
+                    },
+                    "truck_1": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_1 is at location location_3"
+                        ]
+                    },
+                    "location_0": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_0 is in city city_1",
+                            "location_0 is an airport"
+                        ]
+                    },
+                    "location_1": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_1 is in city city_0",
+                            "location_1 is an airport"
+                        ]
+                    },
+                    "location_2": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_2 is in city city_0"
+                        ]
+                    },
+                    "location_3": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_3 is in city city_1"
+                        ]
+                    },
+                    "package_0": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_0 is at location location_0"
+                        ]
+                    },
+                    "package_1": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_1 is at location location_2"
+                        ]
+                    },
+                    "package_2": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_2 is at location location_0"
+                        ]
+                    }
+                },
+                "watermark": "05/15/2023, 22:17:53"
+            }
+        }
+    },
+    "Transport package package_1 to location location_3, package package_2 to location location_2 and package package_0 to location location_1; please transport package package_2 first before transporting package_0": {
+        "case_0": {
+            "scene_0": {
+                "objects": {
+                    "plane_0": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_0 is at location location_0"
+                        ]
+                    },
+                    "city_0": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "city_1": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "truck_0": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_0 is at location location_1"
+                        ]
+                    },
+                    "truck_1": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_1 is at location location_3"
+                        ]
+                    },
+                    "location_0": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_0 is in city city_1",
+                            "location_0 is an airport"
+                        ]
+                    },
+                    "location_1": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_1 is in city city_0",
+                            "location_1 is an airport"
+                        ]
+                    },
+                    "location_2": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_2 is in city city_0"
+                        ]
+                    },
+                    "location_3": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_3 is in city city_1"
+                        ]
+                    },
+                    "package_0": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_0 is at location location_0"
+                        ]
+                    },
+                    "package_1": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_1 is at location location_2"
+                        ]
+                    },
+                    "package_2": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_2 is at location location_0"
+                        ]
+                    }
+                },
+                "watermark": "05/15/2023, 22:17:53"
+            }
+        }
+    },
+    "Transport package package_1 to location location_3, package package_2 to location location_2 and package package_0 to location location_1; please transport package package_0 first before transporting package_2": {
+        "case_0": {
+            "scene_0": {
+                "objects": {
+                    "plane_0": {
+                        "type": {
+                            "name": "plane",
+                            "family": "plane"
+                        },
+                        "state": [
+                            "plane_0 is at location location_0"
+                        ]
+                    },
+                    "city_0": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "city_1": {
+                        "type": {
+                            "name": "city",
+                            "family": "city"
+                        },
+                        "state": []
+                    },
+                    "truck_0": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_0 is at location location_1"
+                        ]
+                    },
+                    "truck_1": {
+                        "type": {
+                            "name": "truck",
+                            "family": "truck"
+                        },
+                        "state": [
+                            "truck_1 is at location location_3"
+                        ]
+                    },
+                    "location_0": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_0 is in city city_1",
+                            "location_0 is an airport"
+                        ]
+                    },
+                    "location_1": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_1 is in city city_0",
+                            "location_1 is an airport"
+                        ]
+                    },
+                    "location_2": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_2 is in city city_0"
+                        ]
+                    },
+                    "location_3": {
+                        "type": {
+                            "name": "location",
+                            "family": "location"
+                        },
+                        "state": [
+                            "location_3 is in city city_1"
+                        ]
+                    },
+                    "package_0": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_0 is at location location_0"
+                        ]
+                    },
+                    "package_1": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_1 is at location location_2"
+                        ]
+                    },
+                    "package_2": {
+                        "type": {
+                            "name": "package",
+                            "family": "package"
+                        },
+                        "state": [
+                            "package_2 is at location location_0"
+                        ]
+                    }
+                },
+                "watermark": "05/15/2023, 22:17:53"
+            }
+        }
+    }
+}
