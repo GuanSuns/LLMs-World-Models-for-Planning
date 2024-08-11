@@ -126,7 +126,7 @@ def main():
     llm_gpt = GPT_Chat(engine=engine)
 
     results_dict = Dict()
-    date_str = datetime.today().strftime('%Y-%m-%d') if add_date_str else ''
+    date_str = datetime.today().strftime('%Y-%m-%d-%H-%M') if add_date_str else ''
     result_log_dir = f'results/{date_str}/{domain}/{prompt_version}'
     os.makedirs(result_log_dir, exist_ok=True)
 
