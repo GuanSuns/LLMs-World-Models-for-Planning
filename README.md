@@ -10,6 +10,15 @@ Python implementation of the paper: [Leveraging Pre-trained Large Language Model
   <img src="doc/overview.png" alt="overview"/>
 </p>
 
+### Step 0. Env Setup
+- Install dependencies
+```
+conda create -n llm-pddl python=3.11
+conda activate llm-pddl
+pip install -r requirements.txt
+```
+- Config OpenAI API key: put your key under `config/api_config.json`
+
 ### Step 1. Generate World (Domain) Models
 
 To leverage an LLM to construct a domain model, you need to provide the following information:

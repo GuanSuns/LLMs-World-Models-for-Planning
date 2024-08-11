@@ -11,7 +11,7 @@ from utils.predicate_reader import read_predicates
 
 
 def correct_action_model(llm_conn, messages,
-                         action_name, predicate_list, max_iteration=8, end_when_error=False,
+                         action_name, predicate_list, max_iteration=8,
                          shorten_message=False, syntax_validator=None):
     def _shorten_message(_msg, _step_i):
         """
@@ -41,8 +41,7 @@ def correct_action_model(llm_conn, messages,
         i_iter += 1
         llm_message = _shorten_message(messages, i_iter) if shorten_message else messages
         conn_success, llm_output = llm_conn.get_response(prompt=None,
-                                                         messages=llm_message,
-                                                         end_when_error=end_when_error)
+                                                         messages=llm_message)
         messages.append({'role': 'assistant', 'content': llm_output})
         if not conn_success:
             raise Exception('Fail to connect to the LLM')
@@ -104,7 +103,6 @@ def main():
     prompt_version = 'model_blocksworld'
     domain = 'tyreworld'
     engine = 'gpt-4'  # 'gpt-4', 'text-davinci-003', 'gpt-3.5-turbo'
-    end_when_error = False
     unsupported_keywords = ['forall', 'when', 'exists', 'implies']
     max_feedback = 8 if 'gpt-4' in engine else 3  # more feedback doesn't help with other models like gpt-3.5-turbo
     shorten_messages = False if 'gpt-4' in engine else True
@@ -172,7 +170,7 @@ def main():
                          {'role': 'user', 'content': get_feedback_message(annotated_pddl[action]['annotation'])}]
 
         correction_info = correct_action_model(llm_gpt, init_messages, action, predicate_list,
-                                               max_iteration=max_feedback, end_when_error=end_when_error,
+                                               max_iteration=max_feedback,
                                                shorten_message=shorten_messages, syntax_validator=syntax_validator)
         messages, predicate_list, llm_output, user_mark_success = correction_info
         results_dict[action]['messages'] = messages

@@ -1,6 +1,7 @@
 import json
 import os
 from copy import deepcopy
+from datetime import datetime
 
 from addict import Dict
 
@@ -29,7 +30,7 @@ def get_predicate_prompt(predicate_list):
 
 
 def construct_action_model(llm_conn, action_predicate_prompt,
-                           action_name, predicate_list, max_iteration=8, end_when_error=False,
+                           action_name, predicate_list, max_iteration=8,
                            shorten_message=False, syntax_validator=None):
     def _shorten_message(_msg, _step_i):
         """
@@ -54,7 +55,7 @@ def construct_action_model(llm_conn, action_predicate_prompt,
         i_iter += 1
         print(f'[INFO] generating PDDL of action: `{action_name}` | # of messages: {len(messages)}')
         llm_message = _shorten_message(messages, i_iter) if shorten_message else messages
-        conn_success, llm_output = llm_conn.get_response(prompt=None, messages=llm_message, end_when_error=end_when_error)
+        conn_success, llm_output = llm_conn.get_response(prompt=None, messages=llm_message)
         messages.append({'role': 'assistant', 'content': llm_output})
         if not conn_success:
             raise Exception('Fail to connect to the LLM')
@@ -91,13 +92,13 @@ def main():
     skip_actions = None
     prompt_version = 'model_blocksworld'
     include_additional_info = True
-    domain = 'tyreworld'  # 'household', 'logistics', 'tyreworld'
+    domain = 'logistics'  # 'household', 'logistics', 'tyreworld'
     engine = 'gpt-4'  # 'gpt-4' or 'gpt-3.5-turbo'
-    end_when_error = False      # whether to end the experiment when having connection error
     unsupported_keywords = ['forall', 'when', 'exists', 'implies']
     max_iterations = 3 if ('gpt-4' in engine and domain != 'household') else 2  # we only do 2 iteration in Household because there are too many actions, so the experiments are expensive to run
     max_feedback = 8 if 'gpt-4' in engine else 3    # more feedback doesn't help with other models like gpt-3.5-turbo
     shorten_messages = False if 'gpt-4' in engine else True
+    add_date_str = True
 
     pddl_prompt_dir = f'prompts/common/'
     domain_data_dir = f'prompts/{domain}'
@@ -125,7 +126,8 @@ def main():
     llm_gpt = GPT_Chat(engine=engine)
 
     results_dict = Dict()
-    result_log_dir = f'results/{domain}/{prompt_version}'
+    date_str = datetime.today().strftime('%Y-%m-%d') if add_date_str else ''
+    result_log_dir = f'results/{date_str}/{domain}/{prompt_version}'
     os.makedirs(result_log_dir, exist_ok=True)
 
     for i_iter in range(max_iterations):
@@ -154,7 +156,7 @@ def main():
             action_predicate_prompt += '\n\nParameters:'
             pddl_construction_output = construct_action_model(llm_gpt, action_predicate_prompt, action, predicate_list,
                                                               shorten_message=shorten_messages, max_iteration=max_feedback,
-                                                              end_when_error=end_when_error, syntax_validator=syntax_validator)
+                                                              syntax_validator=syntax_validator)
             llm_output, action_results_dict, predicate_list = pddl_construction_output
 
             results_dict.update(action_results_dict)

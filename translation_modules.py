@@ -19,7 +19,7 @@ class PDDL_Translator:
             from llm_model import GPT_Chat
             self.llm_conn = GPT_Chat(engine=engine)
 
-    def pddl_to_language(self, pddl, predicate_list, contextual_info=None, end_when_error=False):
+    def pddl_to_language(self, pddl, predicate_list, contextual_info=None):
         relevant_predicates = list()
         # extract relevant predicates (to make the prompt shorter)
         for pred in predicate_list:
@@ -39,10 +39,10 @@ class PDDL_Translator:
         prompt += f'\n\nPDDL:\n```\n{pddl.strip()}\n```\n'
         prompt += '\nTranslated PDDL:'
         # get the output from llm
-        conn_success, llm_output = self.llm_conn.get_response(prompt, end_when_error=end_when_error)
+        conn_success, llm_output = self.llm_conn.get_response(prompt)
         return conn_success, llm_output
 
-    def translate_domain_model(self, domain_model, predicate_list, action_info=None, end_when_error=False):
+    def translate_domain_model(self, domain_model, predicate_list, action_info=None):
         domain_model = deepcopy(domain_model)
         for act in domain_model:
             contextual_info = None if action_info is None else action_info[act]['desc']
@@ -50,8 +50,7 @@ class PDDL_Translator:
             print(f'[INFO] translating preconditions of `{act}`')
             precond_pddl = domain_model[act]['preconditions']
             _, llm_output = self.pddl_to_language(precond_pddl, predicate_list,
-                                                  contextual_info=contextual_info,
-                                                  end_when_error=end_when_error)
+                                                  contextual_info=contextual_info)
             precond_list = list()
             # drop the leading '(and' and the ending ')'
             for precond in llm_output.split('\n')[1:-1]:
@@ -63,8 +62,7 @@ class PDDL_Translator:
             print(f'[INFO] translating effects of `{act}`')
             eff_pddl = domain_model[act]['effects']
             _, llm_output = self.pddl_to_language(eff_pddl, predicate_list,
-                                                  contextual_info=contextual_info,
-                                                  end_when_error=end_when_error)
+                                                  contextual_info=contextual_info)
             eff_list = list()
             # drop the leading '(and' and the ending ')'
             for eff in llm_output.split('\n')[1:-1]:
@@ -122,8 +120,7 @@ class Action_Description_Generator:
                 return False, 'missing_params_in_description', feedback_msg
         return True, None, None
 
-    def get_act_description(self, act_params, detailed_description,
-                            end_when_error=False, max_iter=5):
+    def get_act_description(self, act_params, detailed_description, max_iter=5):
         act_desc_prompt = str(self.action_desc_prompt) + '\n\n'
         act_desc_prompt += 'Action: ' + detailed_description
         act_desc_prompt += '\n\n' + 'Parameters:'
@@ -137,7 +134,7 @@ class Action_Description_Generator:
         while i_iter < max_iter:
             i_iter += 1
             # get the output from llm
-            conn_success, llm_output = self.llm_conn.get_response(prompt=None, messages=messages, end_when_error=end_when_error)
+            conn_success, llm_output = self.llm_conn.get_response(prompt=None, messages=messages)
             messages.append({'role': 'assistant', 'content': llm_output})
             # validate the description and short example
             try:

@@ -1,0 +1,5 @@
+{
+  "openai": {
+    "api_key": "put your OpenAI api key here"
+  }
+}
